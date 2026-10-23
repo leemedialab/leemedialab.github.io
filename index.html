@@ -216,11 +216,70 @@ h1[tabindex="-1"]:focus{outline:none}
 .topban__img{overflow:hidden;border-radius:var(--r-lg);background:var(--bg-3);box-shadow:var(--shadow)}
 .topban__img img{width:100%;height:auto}
 @media (max-width:600px){.topban__img{border-radius:14px}}
+/* ---------- home: one warm paper band from under the glass bar to a rounded edge above the orgs strip (mockup C) ---------- */
+:root{--barh:72px}
+@media (max-width:1320px){:root{--barh:118px}}
+.hband{--band:#F4F3F0;--veil:var(--band);position:relative;isolation:isolate;overflow:hidden;margin-top:calc(var(--barh) * -1);padding-top:var(--barh);
+  background:var(--band);border-radius:0 0 clamp(28px,4vw,56px) clamp(28px,4vw,56px)}
+.hband .portrait .media{box-shadow:0 0 0 1px rgba(11,11,15,.05),0 2px 6px rgba(11,11,15,.04),0 44px 80px -40px rgba(11,11,15,.38)}
+.hband + .orgs{border-top-color:transparent}
+:root[data-theme="dark"] .hband{--band:#15151B;box-shadow:inset 0 -1px 0 rgba(255,255,255,.14),0 24px 60px -30px rgba(0,0,0,.8)}
+:root[data-theme="dark"] .hband .portrait .media{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 90px -30px rgba(0,0,0,.9)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hband{--band:#15151B;box-shadow:inset 0 -1px 0 rgba(255,255,255,.14),0 24px 60px -30px rgba(0,0,0,.8)}
+  :root:not([data-theme="light"]) .hband .portrait .media{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 90px -30px rgba(0,0,0,.9)}}
+/* the collage as a washed paper texture behind the hero (mockup A) */
+:root{--art-op:1;--art-filter:grayscale(1) contrast(.8) brightness(1.07);--art-wash:52%}
+/* dark: no inversion, the paper is printed darker and dimmed, so it reads as dark newsprint */
+:root[data-theme="dark"]{--art-op:.6;--art-filter:grayscale(1) brightness(.42) contrast(1.2);--art-wash:40%}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--art-op:.6;--art-filter:grayscale(1) brightness(.42) contrast(1.2);--art-wash:40%}}
+/* the paper starts right under the bar and fades in, so no clipping headline is cut by the glass edge; on scroll it slides under the glass */
+.hero__bg{position:absolute;z-index:-1;inset:0;pointer-events:none;overflow:hidden}
+.hero__bg::before,.hero__bg::after{content:"";position:absolute}
+/* anchored to the text column: the BROADCASTING clipping (30.5% into the art) always starts just past the pill, at every width */
+.hero__bg::before{top:-24px;left:min(0px,calc(max(0px,(100% - var(--wrap) - 80px) / 2) + var(--gut) + 293px - .3047 * max(1900px,132%)));width:max(1900px,132%);aspect-ratio:2560/1200;
+  background:url("assets/img/bg-collage.webp") 0 0/100% 100% no-repeat;filter:var(--art-filter);opacity:var(--art-op);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 44px,#000 58%,transparent 94%);mask-image:linear-gradient(180deg,transparent 0,#000 44px,#000 58%,transparent 94%)}
+/* veil: a light wash, a little more on the far left, then a fade into the page */
+.hero__bg::after{inset:0;background:
+  linear-gradient(180deg,transparent 0,transparent 62%,var(--veil,var(--bg)) 98%),
+  linear-gradient(90deg,color-mix(in srgb,var(--veil,var(--bg)) 70%,transparent) 0,transparent calc(max(0px,(100% - var(--wrap) - 80px) / 2) + var(--gut) + 120px)),
+  color-mix(in srgb,var(--veil,var(--bg)) var(--art-wash),transparent)}
+/* spotlight: a soft, near-solid ground that follows the text column, so the headline, lead and buttons sit on clean paper */
+.hero__grid > :first-child{position:relative}
+.hero__grid > :first-child::before{content:"";position:absolute;z-index:-1;inset:46px -64px -40px -80px;border-radius:64px;pointer-events:none;
+  background:var(--veil,var(--bg));background:color-mix(in srgb,var(--veil,var(--bg)) 97%,transparent);filter:blur(34px)}
+@media (max-width:600px){
+  /* phone: the text runs full width, so the paper is a masthead band under the bar that ends before the headline */
+  .hero__bg::before{top:-10px;width:1000px;left:0;transform:translateX(-62px);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30px,#000 26%,transparent 46%);mask-image:linear-gradient(180deg,transparent 0,#000 30px,#000 26%,transparent 46%)}
+  .hero__bg::after{background:color-mix(in srgb,var(--veil,var(--bg)) 40%,transparent)}
+  .hero__grid > :first-child::before{inset:40px -40px -24px -40px}
+}
+/* one sticker from the channel art (the YouTube play) peeks out from behind the portrait's top-right corner; on a phone it sits in the masthead band */
+:root{--stk-filter:saturate(.6) contrast(.95);--stk-op:.92}
+:root[data-theme="dark"]{--stk-filter:saturate(.6) brightness(.62);--stk-op:.8}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--stk-filter:saturate(.6) brightness(.62);--stk-op:.8}}
+.portrait::before,.hero__grid::after{content:"";position:absolute;z-index:-1;--k:.8;width:calc(110px * var(--k));height:calc(104px * var(--k));pointer-events:none;
+  background:url("assets/img/bg-collage-icons.webp") calc(-1862px * var(--k)) calc(-480px * var(--k))/calc(2560px * var(--k)) auto no-repeat;filter:var(--stk-filter);opacity:var(--stk-op);
+  clip-path:polygon(5.5% 54.8%,22.7% 16.3%,31.8% 7.7%,39.1% 4.8%,80.9% 13.5%,92.7% 26.9%,95.5% 34.6%,93.6% 49%,83.6% 78.8%,68.2% 94.2%,33.6% 90.4%,18.2% 85.6%,7.3% 75%,4.5% 68.3%)}
+/* never past the viewport edge: at most 62px out, less when the side gutter is narrow */
+.portrait::before{top:-50px;right:max(-62px,calc(10px - var(--gut-r) - max(0px,(100vw - var(--wrap) - 80px) / 2)))}
+.hero__grid::after{display:none}
+@media (max-width:600px){
+  .portrait::before{display:none}
+  .hero__grid::after{display:block;--k:.56;top:-34px;right:calc(var(--gut-r) - 6px)}
+}
+/* browsers without color-mix() get a flat, heavy veil instead of the art at full strength */
+@supports not (color:color-mix(in srgb,red 50%,blue)){.hero__bg::after{inset:0;background:var(--veil,var(--bg))!important;opacity:.9}}
 .stat--link{text-decoration:none;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
 .stat--link:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
 
 /* ---------- home: hero ---------- */
-.hero{position:relative;overflow:hidden;padding-block:clamp(28px,4vw,56px) clamp(48px,6vw,80px)}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(28px,4vw,56px) clamp(56px,7vw,96px)}
+/* the hero glow is quieter in light theme, so it does not tint the grey paper peach */
+.hero{--glow-1:rgba(255,91,34,.13)}
+:root[data-theme="dark"] .hero{--glow-1:rgba(255,106,51,.22)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero{--glow-1:rgba(255,106,51,.22)}}
 .hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:min(980px,90vw);height:900px;pointer-events:none;
   background:radial-gradient(closest-side at 60% 40%,var(--glow-1),transparent 70%),radial-gradient(closest-side at 30% 70%,var(--glow-2),transparent 70%);filter:blur(10px)}
 .hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(32px,5vw,80px);align-items:center}
@@ -853,10 +912,12 @@ h1[tabindex="-1"]:focus{outline:none}
 
 <!-- =================================================================== HOME -->
 <div class="view" id="home" data-label="Home">
+  <div class="hband">
   <section class="topban" aria-label="유튜브 《이홍연의 미디어LAB》 채널아트">
     <div class="wrap"><figure class="topban__img"><img src="assets/img/home-banner.webp" alt="《이홍연의 미디어랩》 채널아트: SNS, Movie, Broadcasting, Entertainment, OTT, Telecom 신문 콜라주 위의 '이홍연의 미디어랩' 타이틀과 베이지 수트를 입은 이홍연, #콘텐츠 #플랫폼 #통신(ICT)" width="2560" height="418" fetchpriority="high"></figure></div>
   </section>
   <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__bg" aria-hidden="true"></div>
     <div class="wrap hero__grid">
       <div>
         <span class="pill pill--live">AI-Native 콘텐츠 디렉터 · 기업 강사</span>
@@ -880,6 +941,7 @@ h1[tabindex="-1"]:focus{outline:none}
       </div>
     </div>
   </section>
+  </div>
 
   <section class="orgs" aria-label="함께 일하고 출연한 곳">
     <div class="wrap"><p class="orgs__label">함께 일하고 출연한 곳</p></div>
@@ -1794,6 +1856,8 @@ h1[tabindex="-1"]:focus{outline:none}
   function onScroll(){var y=window.scrollY;bar.classList.toggle('is-scrolled',y>4);
     bar.classList.toggle('is-hid',narrow.matches&&y>lastY&&y>160&&!bar.contains(document.activeElement));lastY=y}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  function barH(){root.style.setProperty('--barh',bar.offsetHeight+'px')}
+  if('ResizeObserver' in window)new ResizeObserver(barH).observe(bar);else window.addEventListener('resize',barH);barH();
 
   // one view per menu item; the hash names the view (or an anchor inside one)
   var views=[].slice.call(document.querySelectorAll('.view'));
