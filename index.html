@@ -340,7 +340,7 @@ h1[tabindex="-1"]:focus{outline:none}
 .speaker{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:start}
 .speaker__photo{position:sticky;top:110px}
 .speaker__photo .media{aspect-ratio:4/5}
-.speaker__photo .media img{object-position:46% 50%}
+.speaker__photo .media img{object-position:50% 28%}
 .roles{display:grid;gap:0;border-top:1px solid var(--line-2)}
 .roles li{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
 .roles .tag{font-size:13px;font-weight:800;color:var(--accent-ink)}
@@ -475,6 +475,24 @@ h1[tabindex="-1"]:focus{outline:none}
 .quote{display:flex;flex-direction:column;justify-content:space-between;gap:24px}
 .quote blockquote{margin:0;font-size:clamp(22px,2.2vw,30px);font-weight:800;letter-spacing:-.04em;line-height:1.4}
 .quote cite{font-style:normal;font-size:14px;color:var(--ink-3);font-weight:600}
+/* award card that opens the article */
+.quote--link{color:var(--ink);text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.quote--link:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.quote__foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
+.quote__go{display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;border-radius:999px;background:var(--accent-fill);color:#fff;font-size:13px;font-weight:800;white-space:nowrap}
+.quote__go .ic{width:15px;height:15px}
+/* news card: the press photo on top, outlet, date and headline below it, the whole card opens the article */
+.news{display:flex;flex-direction:column;padding:0;overflow:hidden;color:inherit;text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.news:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.news__img{position:relative;flex:1;min-height:300px;overflow:hidden;background:var(--bg-3)}
+.news__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;transition:transform .9s var(--ease)}
+.news:hover .news__img img{transform:scale(1.03)}
+.news:hover .go{background:var(--accent-fill)}
+.news__body{display:grid;gap:6px;padding:clamp(16px,1.8vw,22px) clamp(18px,2vw,26px) clamp(18px,2vw,24px)}
+.news__body em{font-style:normal;font-size:13px;font-weight:800;color:var(--accent-ink)}
+.news__body b{font-size:clamp(18px,1.7vw,22px);font-weight:800;letter-spacing:-.035em;line-height:1.35}
+.news__body small{font-size:12.5px;color:var(--ink-3)}
+@media (max-width:960px){.news__img{flex:none;min-height:0;aspect-ratio:3/2}}
 .chart svg{display:block;width:100%;min-width:600px;height:auto}
 .chart__scroll{overflow-x:auto;margin-top:8px}
 @media (max-width:1300px){.tl__bar--short{font-size:0;padding:0}}
@@ -992,8 +1010,8 @@ h1[tabindex="-1"]:focus{outline:none}
       </div>
       <div class="speaker">
         <div class="speaker__photo rv">
-          <figure class="media"><img src="assets/img/home-studio.webp" alt="링라이트와 카메라가 있는 개인 스튜디오 책상 앞의 이홍연" width="1600" height="1067" loading="lazy"></figure>
-          <p class="cap">사내 웹진 B log Vol.63 커버스토리 「홍연의 상상은 현실이 된다」</p>
+          <figure class="media"><img src="assets/img/home-speaker.webp" alt="개인 스튜디오에서 마이크 앞에 앉아 턱을 괴고 미소 짓는 이홍연" width="1100" height="1490" loading="lazy"></figure>
+          <p class="cap">개인 스튜디오에서 《이홍연의 미디어LAB》 촬영 중</p>
         </div>
         <div class="rv">
           <ul class="roles">
@@ -1280,13 +1298,13 @@ h1[tabindex="-1"]:focus{outline:none}
   <section class="wrap" style="padding-bottom:clamp(24px,3vw,40px)">
     <div class="block">
       <div class="feature-big">
-        <a class="media golink rv" href="https://www.youtube.com/channel/UCuKKkBSGK4e9fuaquWXorJg" target="_blank" rel="noopener" aria-label="《B tv 이동진의 파이아키아》 유튜브 채널 새 창으로 보기"><img src="assets/img/pd-two.webp" alt="DVD 서가 앞에서 이동진 평론가와 크게 웃는 이홍연" width="1400" height="788" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>채널 보기</span></a>
+        <a class="card news rv" href="https://www.fnnews.com/news/202401201301084131" target="_blank" rel="noopener" aria-label="파이낸셜뉴스 기사 「SKB 'B tv 이동진의 파이아키아', 구독자 50만명 돌파」 새 창으로 보기"><span class="news__img"><img src="assets/img/pd-50man.webp" alt="'구독자 50만 명 돌파!' 판을 함께 든 이홍연과 이동진 영화평론가" width="1024" height="684" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>기사 보기</span></span><span class="news__body"><em>파이낸셜뉴스 · 2024.01.21</em><b>SKB 'B tv 이동진의 파이아키아', 구독자 50만명 돌파</b><small>진행자 이홍연 SK브로드밴드 매니저와 이동진 영화평론가 · 사진 SKB 제공</small></span></a>
         <div class="fb-side">
-          <div class="card quote is-dark rv">
-            <span class="eyebrow">Noxinfluencer · 2023.06</span>
-            <blockquote>"한국 전체 유튜브 채널 중 상위 1%, 영화 평론 유튜브 채널 중 1위"</blockquote>
-            <cite>소셜 미디어 데이터 분석 서비스 기준</cite>
-          </div>
+          <a class="card quote quote--link is-dark rv" href="https://www.metroseoul.co.kr/article/20240121500129" target="_blank" rel="noopener" aria-label="메트로신문 기사: 파이아키아 국회도서관장상 수상 새 창으로 보기">
+            <span class="eyebrow">국회 문화체육관광위원회 주최 · 2023.12</span>
+            <blockquote>글로벌 인플루언서 어워드<br><span class="grad">국회도서관장상</span> 수상</blockquote>
+            <span class="quote__foot"><cite>《B tv 이동진의 파이아키아》 채널 수상 · 메트로신문 2024.01.21</cite><span class="quote__go">기사 보기<svg class="ic" aria-hidden="true"><use href="#i-out"/></svg></span></span>
+          </a>
           <div class="card award rv">
             <div class="award__txt">
               <span class="award__k"><svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>SK그룹 toktokTV · 2020.11</span>
