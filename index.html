@@ -516,6 +516,10 @@ h1[tabindex="-1"]:focus{outline:none}
 .vid__views{position:absolute;left:12px;bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.72);color:#fff;font-size:13px;font-weight:800;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .vid h3{font-size:16px;font-weight:700;letter-spacing:-.025em;line-height:1.45}
 .vid p{margin-top:-8px;font-size:13px;color:var(--ink-3)}
+/* 콘텐츠 디렉터/MC: four on-air stills, two by two */
+.hosts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 16px}
+.hosts .media{aspect-ratio:16/9}
+@media (max-width:600px){.hosts{grid-template-columns:minmax(0,1fr)}}
 .photos{display:grid;grid-template-columns:1.6fr 1fr;gap:16px}
 .photos .media{aspect-ratio:16/9}
 .photos .media:last-child{aspect-ratio:auto}
@@ -1597,11 +1601,13 @@ h1[tabindex="-1"]:focus{outline:none}
       </div>
     </div>
     <div class="block">
-      <div class="photos">
-        <figure class="media rv"><img src="assets/img/pd-magazine.webp" alt="B tv 이동진의 파이아키아 매거진 표지: 40만 채널 성장 스토리" width="1800" height="1007" loading="lazy"></figure>
-        <figure class="media rv"><img src="assets/img/pd-library.webp" alt="파이아키아 서재 세트에서 포즈를 취한 이홍연" width="1400" height="935" loading="lazy"></figure>
+      <div class="block-title"><h2>메인 MC로 진행한 본편</h2><p>2022–2023 방송 장면 · 본편 원본에서 캡처</p></div>
+      <div class="hosts">
+        <figure class="rv"><div class="media"><img src="assets/img/pd-host-1.webp" alt="외국 영화 악역 Best 10 순위 보드를 넘기며 이동진 평론가와 웃는 이홍연" width="1600" height="900" loading="lazy"></div><figcaption class="cap">2022 · 〈외국 영화 악역 Best 10〉 순위 보드 진행</figcaption></figure>
+        <figure class="rv"><div class="media"><img src="assets/img/pd-host-2.webp" alt="영화 예스터데이 포스터를 사이에 두고 이동진 평론가와 이야기하는 이홍연" width="1600" height="900" loading="lazy"></div><figcaption class="cap">2022 · 〈비틀즈 영화〉 편 토크 진행</figcaption></figure>
+        <figure class="rv"><div class="media"><img src="assets/img/pd-host-3.webp" alt="테이블에 마주 앉아 이동진 평론가의 이야기에 크게 웃는 이홍연" width="1600" height="900" loading="lazy"></div><figcaption class="cap">2023 · 〈퇴사〉 편 토크 진행</figcaption></figure>
+        <figure class="rv"><div class="media"><img src="assets/img/pd-host-4.webp" alt="좋은 영화 기준 순위 보드 앞에서 카드를 들고 진행하는 이홍연" width="1600" height="900" loading="lazy"></div><figcaption class="cap">2023 · 〈좋은 영화의 기준〉 순위 발표 진행</figcaption></figure>
       </div>
-      <p class="cap">《B tv 이동진의 파이아키아》 Magazine(2023.07, 팀 공동 제작)과 스튜디오 촬영 현장</p>
     </div>
     <div class="block">
       <div class="miles">
