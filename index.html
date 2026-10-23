@@ -756,6 +756,51 @@ h1[tabindex="-1"]:focus{outline:none}
   .cv-next__txt{grid-column:1/-1;padding-bottom:0}
   .cv-next__cut{grid-column:2;margin-top:-36px}
 }
+/* home card 01: the five fields as a woven media stack (inline SVG) */
+/* Why 01 "woven media stack": inline SVG + HTML labels on a dark stage (the same in both themes, like card 03) */
+.media.net-fig{container-type:inline-size;--ink:#F4F4F6;--ink-3:#8A8A96;--line-2:rgba(255,255,255,.16);--accent:#FF6A33;--accent-ink:#FF8A5C;
+  --net-s1:#141419;--net-s2:#2A2A33;--net-e1:#0E0E12;--net-e2:#08080B;--net-eg:rgba(255,255,255,.16);--net-ln:rgba(255,255,255,.4);--net-ho:#050507;--net-a1:#3D2117;--net-a2:#1E120E;--net-ae:rgba(255,106,51,.55);--net-hl:rgba(255,106,51,.5);--net-sh:rgba(0,0,0,.7);
+  background:radial-gradient(60% 55% at 70% 6%,rgba(255,106,51,.16),transparent 72%),linear-gradient(172deg,#17171D 30%,#0B0B0F);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+.net-svg,.net-lbs{position:absolute;inset:0;width:100%;height:100%;transition:transform .9s var(--ease)}
+.net-svg{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hoverzoom:hover :is(.net-svg,.net-lbs){transform:scale(1.03)}
+.net-pl *{vector-effect:non-scaling-stroke}
+.net-ed{fill:url(#net-ge);stroke:url(#net-ge);stroke-width:2}
+.net-sf{fill:url(#net-gs);stroke:var(--net-eg);stroke-width:.8}
+.net-ai .net-sf{fill:url(#net-ga);stroke:var(--net-ae)}
+.net-s1{stop-color:var(--net-s1)}.net-s2{stop-color:var(--net-s2)}.net-e1{stop-color:var(--net-e1)}.net-e2{stop-color:var(--net-e2)}.net-a1{stop-color:var(--net-a1)}.net-a2{stop-color:var(--net-a2)}
+.net-sh{fill:var(--net-sh);filter:url(#net-bs)}
+.net-gw{fill:var(--accent);opacity:.16;filter:url(#net-bs)}
+.net-ln,.net-pp{stroke:var(--net-ln);stroke-width:2}
+.net-pp{fill:var(--net-s2)}
+.net-dt{stroke:var(--net-ln);stroke-width:5.5}
+.net-tla,.net-sp{fill:var(--accent)}.net-tlp{fill:#fff}
+.net-ho{fill:var(--net-ho);stroke:none}
+.net-br{stroke:var(--ink-3);stroke-width:4}
+.net-po,.net-lens,.net-cr,.net-hd,.net-bra,.net-bm,.net-f1,.net-f2,.net-co,.net-gl,.net-tr{stroke:var(--accent)}
+.net-po,.net-lens,.net-cr{stroke-width:2}
+.net-po2{stroke:var(--ink);stroke-width:1.6;opacity:.55}
+.net-po3{stroke-width:1.4}
+.net-hd{stroke-width:4}
+.net-f1{stroke-width:1.1;opacity:.6}
+.net-f2{stroke-width:.8;opacity:.34}
+.net-co{stroke-width:1.8}
+.net-gl{stroke-width:7;opacity:.28;filter:url(#net-bl)}
+.net-sec{stroke:var(--ink);opacity:.42}
+.net-tr{stroke-width:1.1;opacity:.75}
+.net-gh{opacity:.42}
+.net-bm{stroke-width:1.4;stroke-dasharray:1.5 4}
+.net-hl{fill:var(--net-hl);filter:url(#net-bl)}
+.net-ld path{stroke:var(--line-2)}
+.net-ld .net-ldd{stroke:var(--ink-3);stroke-width:4.4}
+.net-ld .net-ldai{stroke:var(--accent)}
+.net-lbs b{position:absolute;right:63%;top:var(--y);transform:translateY(-50%);color:var(--ink);font-size:12px;font-size:clamp(11px,3.75cqw,14.5px);font-weight:700;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.net-lbs .net-lbai{color:var(--accent-ink)}
+.net-pu{display:none}
+@media (prefers-reduced-motion:no-preference){
+  .net-pu{display:inline;stroke:#FFF1EA;stroke-width:2.2;stroke-dasharray:9 200;stroke-dashoffset:9;animation:net-run 6s cubic-bezier(.45,0,.3,1) calc(var(--i)*1.1s) infinite}
+  @keyframes net-run{0%{stroke-dashoffset:9}22%,100%{stroke-dashoffset:-100}}
+}
 /* 미디어LAB thumbnails, side by side */
 .thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .thumb{position:relative;display:block;margin:0;aspect-ratio:16/9;overflow:hidden;border-radius:14px;background:var(--bg-3);box-shadow:0 0 0 1px var(--line)}
@@ -1285,7 +1330,7 @@ h1[tabindex="-1"]:focus{outline:none}
       </div>
       <div class="feats">
         <article class="card feat hoverzoom rv">
-          <figure class="media"><img src="assets/img/pd-set.webp" alt="파이아키아 촬영 세트에서 포즈를 취한 이홍연" width="1600" height="1067" loading="lazy"></figure>
+          <figure class="media net-fig" role="img" aria-label="ICT 컨설팅, 디지털 마케팅, 콘텐츠·플랫폼 제작과 연구, AI 검색의 다섯 층을 주황색 섬유 다발이 꿰뚫으며 하나로 엮는 일러스트"><svg class="net-svg" viewBox="0 0 400 300" aria-hidden="true"><defs><linearGradient id="net-gs" x1="0" y1="0" x2="1" y2="1"><stop class="net-s1" offset=".35"/><stop class="net-s2" offset="1"/></linearGradient><linearGradient id="net-ge" x1="0" y1="1" x2="1" y2="0"><stop class="net-e1" offset="0"/><stop class="net-e2" offset="1"/></linearGradient><linearGradient id="net-ga" x1="0" y1="0" x2="1" y2="1"><stop class="net-a1" offset="0"/><stop class="net-a2" offset="1"/></linearGradient><filter id="net-bl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter><filter id="net-bs" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter><rect id="net-e" x="4" y="4" width="100" height="100" rx="7"/><rect id="net-f" width="100" height="100" rx="7"/><g id="net-p"><circle class="net-ho" r="4.6"/><circle r="8" vector-effect="non-scaling-stroke"/></g><g id="net-q"><circle class="net-ho" r="4.6"/><circle r="6.5" vector-effect="non-scaling-stroke"/></g><path id="net-c1" d="M236 259C236 241 320 249 320 218" pathLength="100"/><g id="net-s1"><path class="net-f2" d="M236 259C251 241 307 249 320 218M236 259C222 241 335 249 320 218"/><path class="net-f1" d="M236 259C245 241 329 249 320 218M236 259C227 241 311 249 320 218"/><use href="#net-c1" class="net-gl"/><use href="#net-c1" class="net-co"/><use href="#net-c1" class="net-pu" style="--i:0"/></g><path id="net-c2" d="M320 218C320 204 248 210 248 187" pathLength="100"/><g id="net-s2"><path class="net-f2" d="M320 218C335 204 235 210 248 187M320 218C306 204 263 210 248 187"/><path class="net-f1" d="M320 218C329 204 257 210 248 187M320 218C311 204 239 210 248 187"/><use href="#net-c2" class="net-gl"/><use href="#net-c2" class="net-co"/><use href="#net-c2" class="net-pu" style="--i:1"/></g><path id="net-c3" d="M248 187C248 168 310 176 310 145" pathLength="100"/><g id="net-s3"><path class="net-f2" d="M248 187C263 168 297 176 310 145M248 187C234 168 325 176 310 145"/><path class="net-f1" d="M248 187C257 168 319 176 310 145M248 187C239 168 301 176 310 145"/><use href="#net-c3" class="net-gl"/><use href="#net-c3" class="net-co"/><use href="#net-c3" class="net-pu" style="--i:2"/></g><path id="net-c4" d="M310 145C310 114 276 128 276 76" pathLength="100"/><g id="net-s4"><path class="net-f2" d="M310 145C325 114 263 128 276 76M310 145C296 114 291 128 276 76"/><path class="net-f1" d="M310 145C319 114 285 128 276 76M310 145C301 114 267 128 276 76"/><use href="#net-c4" class="net-gl"/><use href="#net-c4" class="net-co"/><use href="#net-c4" class="net-pu" style="--i:3"/></g><path id="net-g1" class="net-sec" d="M236 259C242 241 237 249 233 220M236 259C231 241 226 249 233 220"/><path id="net-g2" class="net-sec" d="M233 220C239 205 252 211 248 187M233 220C228 205 241 211 248 187"/><path id="net-g3" class="net-sec" d="M248 187C254 166 234 176 230 141M248 187C243 166 223 176 230 141"/><path id="net-g4" class="net-sec" d="M230 141C236 112 280 125 276 76M230 141C225 112 269 125 276 76"/><path id="net-t" class="net-tr" d="M320 218C350 212 384 171 384 118S346 111 346 81"/></defs><ellipse class="net-sh" cx="276" cy="267" rx="92" ry="20"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 185)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><path class="net-ln" d="M8 86L28 95L54 94L78 93L93 78L95 46M28 95L20 72M78 93L70 74"/><path class="net-dt" d="M8 86h0M28 95h0M78 93h0M93 78h0M95 46h0M20 72h0M70 74h0"/><use href="#net-p" class="net-po" x="54" y="94"/></g><use href="#net-g1"/><use href="#net-s1"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 146)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><use href="#net-p" class="net-po" x="94" y="50"/><use href="#net-q" class="net-po2" x="52" y="95"/></g><g class="net-gh"><use href="#net-s1"/><use href="#net-g1"/></g><path class="net-br" d="M194 199v-8M202 203v-12M210 207v-17"/><path class="net-br net-bra" d="M218 211v-24"/><use href="#net-g2"/><use href="#net-s2"/><use href="#net-t"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 107)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><g class="net-ln"><rect x="70" y="8" width="22" height="18" rx="3"/><rect x="70" y="30" width="22" height="18" rx="3"/></g><rect class="net-tla" x="70" y="52" width="22" height="18" rx="3"/><path class="net-tlp" d="M77 57V65L85 61z"/><use href="#net-p" class="net-po" x="66" y="94"/></g><g class="net-gh"><use href="#net-s2"/><use href="#net-g2"/></g><use href="#net-g3"/><use href="#net-s3"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 68)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><path class="net-pp" d="M2 58H22L28 64V94H2z"/><path class="net-ln" d="M7 66H21M7 74H23M7 82H16"/><use href="#net-p" class="net-po" x="94" y="60"/><use href="#net-q" class="net-po2" x="50" y="96"/></g><g class="net-gh"><use href="#net-s3"/><use href="#net-g3"/></g><use href="#net-g4"/><use href="#net-s4"/><ellipse class="net-gw" cx="276" cy="100" rx="96" ry="34"/><g class="net-pl net-ai" transform="matrix(1 .5 -1 .5 276 22)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><rect class="net-ln" x="4" y="70" width="38" height="16" rx="8"/><path class="net-ln" d="M12 78H27"/><path class="net-cr" d="M33 74V82"/><circle class="net-lens" cx="54" cy="54" r="17"/><path class="net-hd" d="M70.7 57.3L85 60.3"/><use href="#net-p" class="net-po" x="54" y="54"/><use href="#net-q" class="net-po net-po3" x="94" y="24"/></g><g class="net-gh"><use href="#net-s4"/><use href="#net-g4"/><use href="#net-t"/></g><path class="net-bm" d="M276 68V42"/><circle class="net-hl" cx="276" cy="30" r="15"/><path class="net-sp" d="M276 20.5c1 6.5 3 8.5 9.5 9.5c-6.5 1-8.5 3-9.5 9.5c-1-6.5-3-8.5-9.5-9.5c6.5-1 8.5-3 9.5-9.5z"/><g class="net-ld"><path d="M152 235H178M152 196H178M152 157H178M152 118H178M152 72H178"/><path class="net-ldd" d="M178 235h0M178 196h0M178 157h0M178 118h0"/><path class="net-ldd net-ldai" d="M178 72h0"/></g></svg><div class="net-lbs"><b style="--y:78.3%">ICT 컨설팅</b><b style="--y:65.3%">디지털 마케팅</b><b style="--y:52.3%">콘텐츠·플랫폼 제작</b><b style="--y:39.3%">콘텐츠·플랫폼 연구</b><b class="net-lbai" style="--y:24%">AI 검색</b></div></figure>
           <div class="feat__body"><span class="feat__no">01</span><h3 class="h-3">망에서 콘텐츠, AI 검색까지<br>미디어 전 과정을 겪은 실무자</h3>
             <p>통신 인프라를 설계해 팔았고, 그 망 위의 상품을 알렸고, 콘텐츠를 직접 만들었고, 이제는 AI가 콘텐츠를 고르는 방식을 연구합니다.</p></div>
         </article>
