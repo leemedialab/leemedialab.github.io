@@ -522,6 +522,236 @@ h1[tabindex="-1"]:focus{outline:none}
 .miles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 /* 콘텐츠 디렉터: the accolades column beside the hero photo */
 .fb-side{display:grid;gap:16px}
+/* ---------- #yodel creator story (CAREER 03): long-form chapters, classes prefixed cv- ----------
+   A light webzine flavour inside the site's own system: faint outline/ghost words (YODEL, IMAGINE, YO PD, A TO Z, Dream)
+   behind the panels, cut-outs that step out of their panels, and the webzine's soft lime used only on the
+   production-timeline and B봇 panels and in the ghost words. Every colour is a token redefined for dark. */
+:root{--cv-lime:#E5F3A6;--cv-lime-line:rgba(62,78,0,.17);--cv-ghost:#DCEF80;--cv-outline:rgba(11,11,15,.085);--cv-hand:#47525D;
+  --cv-glass:rgba(255,255,255,.88);--cv-mark:#FFFFFF;--cv-mark-ink:#3F4A00;--cv-ghost-hero:#E8F3B6}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--cv-lime:#1A1E10;--cv-lime-line:rgba(214,245,120,.16);--cv-ghost:rgba(214,245,120,.085);--cv-outline:rgba(255,255,255,.09);--cv-hand:#BAC4CE;
+    --cv-glass:rgba(16,16,21,.86);--cv-mark:#2A3015;--cv-mark-ink:#DDF27F;--cv-ghost-hero:rgba(214,245,120,.085)}
+}
+:root[data-theme="dark"]{--cv-lime:#1A1E10;--cv-lime-line:rgba(214,245,120,.16);--cv-ghost:rgba(214,245,120,.085);--cv-outline:rgba(255,255,255,.09);--cv-hand:#BAC4CE;
+  --cv-glass:rgba(16,16,21,.86);--cv-mark:#2A3015;--cv-mark-ink:#DDF27F;--cv-ghost-hero:rgba(214,245,120,.085)}
+
+/* shared pieces: chapter head, ghost words, panels whose background layer clips the ghost word but not the cut-out */
+.cv-head{display:grid;gap:12px;max-width:880px;margin-bottom:clamp(24px,3vw,40px)}
+.cv-head__k{display:flex;align-items:center;gap:10px;margin:0;font-size:12.5px;font-weight:800;letter-spacing:.16em;color:var(--ink-3)}
+.cv-head__k b{display:grid;place-items:center;min-width:34px;height:26px;padding:0 9px;border-radius:999px;background:var(--accent-fill);color:#fff;font-size:12.5px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.cv-head__k::after{content:"";flex:0 0 44px;height:1px;background:var(--line-2)}
+.cv-head h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-.045em;line-height:1.22}
+.cv-head > p:not(.cv-head__k){font-size:clamp(15.5px,1.2vw,17px);color:var(--ink-2);line-height:1.7;max-width:46em}
+.cv-ghost{position:absolute;margin:0;font-weight:900;line-height:.8;letter-spacing:-.05em;white-space:nowrap;color:var(--cv-ghost);pointer-events:none;user-select:none}
+.cv-ghost--line{color:transparent;-webkit-text-stroke:1.5px var(--cv-outline)}
+.cv-panel{position:relative;isolation:isolate;border-radius:var(--r-xl);background:var(--bg-2)}
+.cv-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;border-radius:inherit;pointer-events:none}
+.cv-yopd__fig,.cv-tl__fig,.cv-anat__fig,.cv-set{margin:0}
+
+/* hero: headline beside a cut-out that steps out of a soft panel */
+.cv-hero{display:grid;grid-template-columns:minmax(0,1fr) clamp(290px,29vw,410px);gap:clamp(28px,4.4vw,72px);align-items:end;padding-bottom:clamp(64px,7.4vw,112px)}
+.cv-hero__txt{min-width:0}
+.cv-hero__fig{position:relative;isolation:isolate;margin:0;height:clamp(380px,32vw,450px);border-radius:var(--r-xl);background:var(--bg-2)}
+.cv-hero__fig img{position:absolute;bottom:0;left:50%;width:auto;height:113%;max-width:none;transform:translateX(-46%);filter:drop-shadow(0 18px 28px rgba(11,11,15,.16));
+  clip-path:inset(-100% -100% 0 -100%)} /* the shadow may spill up and sideways, never below the panel */
+.cv-hero__fig .cv-ghost{left:50%;top:.2em;transform:translateX(-50%);font-size:clamp(84px,8.6vw,124px);color:var(--cv-ghost-hero)}
+.cv-hero__sub{margin-top:12px;font-size:15.5px;line-height:1.7;color:var(--ink-3);max-width:44em}
+
+/* 01 IMAGINE */
+.cv-cover{overflow:hidden;border-radius:var(--r-lg);background:#D9E0E5;box-shadow:var(--shadow)}
+.cv-cover img{width:100%;height:auto}
+.cv-intro{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4.4vw,72px);margin-top:clamp(32px,4vw,56px);padding-top:clamp(36px,4.4vw,64px)}
+.cv-intro .cv-ghost{z-index:-1;left:-.04em;top:0;font-size:clamp(84px,10.6vw,152px)}
+.cv-intro__big{font-size:clamp(22px,2.3vw,31px);font-weight:800;letter-spacing:-.04em;line-height:1.45}
+.cv-intro__body{display:grid;gap:14px;align-content:start;color:var(--ink-2);font-size:16px;line-height:1.75}
+
+/* 02 YO PD: soft panel, ghost YO PD, the thinking cut-out stepping out of the top edge */
+.cv-yopd{display:grid;grid-template-columns:minmax(0,1fr) clamp(210px,22%,270px);gap:clamp(20px,4vw,64px);align-items:center;
+  margin-top:clamp(72px,7vw,96px);padding:clamp(28px,4vw,56px) clamp(24px,4.4vw,64px) 0}
+.cv-yopd .cv-ghost{right:-.03em;bottom:-.1em;font-size:clamp(120px,19vw,290px)}
+.cv-yopd__txt{display:grid;gap:14px;padding-bottom:clamp(28px,4vw,56px);color:var(--ink-2);font-size:16px;line-height:1.75;max-width:40em}
+.cv-yopd .kpis{margin-top:10px}
+.cv-yopd .kpis div{background:var(--card);box-shadow:0 0 0 1px var(--line)}
+.cv-yopd__fig{align-self:end;margin-top:calc(-1 * clamp(96px,9vw,130px))}
+.cv-yopd__fig img{width:100%;height:auto;filter:drop-shadow(0 16px 24px rgba(11,11,15,.14))}
+/* the crew photo with a glass caption card over the open field, as the webzine laid it out */
+.cv-field{position:relative;margin-top:16px;overflow:hidden;border-radius:var(--r-xl);background:#B9A57E}
+.cv-field img{width:100%;height:auto;min-height:0;aspect-ratio:1520/572;object-fit:cover;object-position:0% 50%}
+.cv-field__card{position:absolute;top:clamp(20px,2.4vw,32px);right:clamp(20px,2.4vw,32px);width:min(36%,460px);display:grid;gap:12px;padding:clamp(22px,2.4vw,30px);
+  border-radius:var(--r-lg);background:var(--cv-glass);-webkit-backdrop-filter:blur(14px) saturate(1.3);backdrop-filter:blur(14px) saturate(1.3);box-shadow:var(--shadow)}
+.cv-field__card h3{font-size:clamp(21px,2vw,26px);font-weight:800;letter-spacing:-.04em;line-height:1.3}
+.cv-field__card p{font-size:15.5px;color:var(--ink-2);line-height:1.7}
+
+/* 03 then and now */
+.cv-then{margin-top:16px}
+.cv-then figure:last-child .media img{object-position:50% 2%}
+
+/* 04 A TO Z: a fixed light "studio set" (it reads as a photo in both themes), studio notes beside it */
+.cv-atoz{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(24px,3.6vw,56px);align-items:center}
+.cv-set{--cv-ghost:#D6EC74;position:relative;isolation:isolate;overflow:hidden;border-radius:var(--r-xl);padding-top:clamp(40px,5.6vw,84px);background:linear-gradient(180deg,#D2DBE2 0%,#E2E8EC 100%)}
+.cv-set .cv-ghost{left:50%;top:.12em;transform:translateX(-50%);font-size:clamp(84px,11.6vw,176px)}
+.cv-set img{position:relative;width:100%;height:auto}
+.cv-atoz__txt{display:grid;gap:18px;color:var(--ink-2);font-size:16px;line-height:1.75}
+.cv-spec{border-top:1px solid var(--line-2)}
+.cv-spec div{display:grid;grid-template-columns:78px minmax(0,1fr);gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.cv-spec dt{font-size:13px;font-weight:800;color:var(--accent-ink);padding-top:1px}
+.cv-spec dd{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+
+/* the production timeline: a lime panel with the cut-out standing at its right edge */
+.cv-tl{--cv-over:clamp(56px,7vw,112px);position:relative;display:grid;grid-template-columns:minmax(0,1fr) clamp(220px,22%,280px);align-items:end;margin-top:clamp(64px,7vw,104px)}
+.cv-tl__panel{position:relative;z-index:1;margin-right:calc(-1 * var(--cv-over));padding:clamp(28px,3.6vw,52px);padding-right:calc(clamp(28px,3.6vw,52px) + var(--cv-over));
+  border-radius:var(--r-xl);background:var(--cv-lime)}
+.cv-tl__top{display:grid;gap:10px;max-width:34em}
+.cv-tl__k{margin:0;font-size:13px;font-weight:800;color:var(--ink-2);letter-spacing:-.01em}
+.cv-tl__top h3{font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-.045em;line-height:1.25}
+.cv-tl__top p:last-child{font-size:15.5px;color:var(--ink-2);line-height:1.7}
+.cv-tl__fig{position:relative;z-index:2;align-self:end;margin-bottom:-26px}
+.cv-tl__fig img{width:100%;height:auto;filter:drop-shadow(0 22px 26px rgba(11,11,15,.18))}
+.cv-hand{position:absolute;z-index:3;top:16px;right:calc(100% - 4px);margin:0;font-size:15px;font-weight:800;line-height:1.4;letter-spacing:-.02em;text-align:center;white-space:nowrap;color:var(--cv-hand);transform:rotate(-7deg)}
+.cv-hand::after{content:"";display:block;width:76%;height:2px;margin:7px auto 0;border-radius:2px;background:var(--accent)}
+.cv-steps{position:relative;margin-top:clamp(22px,2.6vw,32px);counter-reset:cvs}
+.cv-steps::before{content:"";position:absolute;left:22px;top:24px;bottom:24px;border-left:1.5px dashed var(--cv-lime-line)}
+.cv-steps li{position:relative;display:grid;grid-template-columns:44px minmax(104px,150px) minmax(0,1fr);gap:16px;align-items:center;min-height:54px;padding:9px 0;counter-increment:cvs}
+.cv-steps li:not(:last-child)::after{content:"";position:absolute;left:60px;right:0;bottom:0;height:1px;background:var(--cv-lime-line)}
+.cv-steps li::before{content:counter(cvs);position:relative;justify-self:center;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--cv-mark);color:var(--cv-mark-ink);
+  font-size:12px;font-weight:800;box-shadow:0 0 0 1px var(--cv-lime-line)}
+.cv-steps li:first-child::before,.cv-steps li:last-child::before{width:44px;height:44px;font-size:11.5px;letter-spacing:.02em}
+.cv-steps li:first-child::before{content:"start"}
+.cv-steps li:last-child::before{content:"finish"}
+.cv-steps b{display:flex;align-items:center;gap:7px;font-size:16px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+.cv-steps b i{font-style:normal;font-size:11.5px;font-weight:800;padding:3px 8px;border-radius:999px;background:var(--accent-fill);color:#fff;font-variant-numeric:tabular-nums}
+.cv-steps span{font-size:15px;color:var(--ink-2);line-height:1.6}
+/* the finished M/V and where it stands now */
+.cv-mv{display:grid;grid-template-columns:clamp(150px,24%,260px) minmax(0,1fr);gap:clamp(16px,2.6vw,32px);align-items:center;margin-top:clamp(44px,5vw,64px);padding:12px;padding-right:clamp(16px,2.6vw,32px);
+  border-radius:var(--r-lg);background:var(--card);border:1px solid var(--line);text-decoration:none;transition:border-color .2s,transform .35s var(--ease),box-shadow .35s var(--ease)}
+.cv-mv:hover{border-color:var(--line-2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.cv-mv__th{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:14px;background:var(--bg-3)}
+.cv-mv__th img{width:100%;height:100%;object-fit:cover}
+.cv-mv__txt{display:grid;gap:6px;min-width:0}
+.cv-mv__txt em{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--accent-ink)}
+.cv-mv__txt b{font-size:clamp(17px,1.7vw,22px);font-weight:800;letter-spacing:-.035em;line-height:1.4}
+.cv-mv__txt small{font-size:13px;color:var(--ink-3);line-height:1.5}
+
+/* 05 ON AIR */
+.cv-onair{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.cv-onair__txt{display:grid;gap:16px;align-content:start;color:var(--ink-2);font-size:15.5px;line-height:1.7}
+@media (min-width:1101px){.cv-onair__txt{align-self:stretch;margin-bottom:33px}} /* card ends where the photos end, captions hang below */
+.cv-onair__q{padding-top:16px;border-top:1px solid var(--line);font-size:18px;font-weight:800;letter-spacing:-.03em;line-height:1.5;color:var(--ink)}
+
+/* 06 관심사원 · B봇 */
+.cv-gw{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:16px;align-items:start}
+.cv-gw__intro{display:grid;grid-template-columns:88px minmax(0,1fr);gap:18px 20px;align-content:start}
+.cv-gw__icon{width:88px;height:88px;border-radius:24px;object-fit:cover;box-shadow:0 0 0 1px var(--line)}
+.cv-gw__body h3{font-size:clamp(20px,1.8vw,24px);font-weight:800;letter-spacing:-.035em}
+.cv-gw__body p{margin-top:10px;font-size:15.5px;color:var(--ink-2);line-height:1.7}
+.cv-gw__intro .kpis{grid-column:1/-1;margin-top:4px}
+.cv-gw__pitch .media{display:block;aspect-ratio:1122/810}
+.cv-gw__pitch .cap b{color:var(--ink);font-weight:800;margin-right:4px}
+.cv-bbot{margin-top:clamp(28px,3vw,40px);padding:clamp(28px,4vw,56px);border-radius:var(--r-xl);background:var(--cv-lime)}
+.cv-bbot__head{display:grid;gap:10px;justify-items:center;max-width:640px;margin-inline:auto;text-align:center}
+.cv-bbot__k{margin:0;font-size:13px;font-weight:800;letter-spacing:.02em;color:var(--ink-2)}
+.cv-bbot__head h3{font-size:clamp(22px,2.4vw,32px);font-weight:800;letter-spacing:-.045em;line-height:1.3}
+.cv-bbot__head p:last-child{font-size:15.5px;color:var(--ink-2);line-height:1.7}
+.cv-anat{display:grid;grid-template-columns:minmax(0,1fr) clamp(220px,27%,320px) minmax(0,1fr);gap:clamp(20px,4vw,64px);align-items:center;margin-top:clamp(24px,3.4vw,44px)}
+.cv-anat__fig{position:relative}
+.cv-anat__fig img{width:100%;height:auto;filter:drop-shadow(0 24px 26px rgba(11,11,15,.2))}
+.cv-pin{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;
+  background:var(--accent-fill);color:#fff;font-size:13px;font-weight:800;box-shadow:0 0 0 3px var(--cv-lime),0 6px 14px -4px rgba(0,0,0,.35)}
+.cv-anat__list{display:grid;gap:clamp(22px,4vw,56px)}
+.cv-anat__list li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:3px 12px;align-items:center}
+.cv-anat__list i{grid-row:span 2;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent-fill);color:#fff;font-style:normal;font-size:13px;font-weight:800}
+.cv-anat__list b{font-size:17px;font-weight:800;letter-spacing:-.03em}
+.cv-anat__list span{grid-column:2;font-size:14.5px;color:var(--ink-2);line-height:1.55}
+.cv-anat__list--l li{grid-template-columns:minmax(0,1fr) 28px;text-align:right}
+.cv-anat__list--l i{grid-column:2;grid-row:1/span 2}
+.cv-anat__list--l b,.cv-anat__list--l span{grid-column:1}
+.cv-bbot__foot{max-width:44em;margin:clamp(24px,3vw,40px) auto 0;padding-top:18px;border-top:1px solid var(--cv-lime-line);text-align:center;font-size:14.5px;color:var(--ink-2);line-height:1.65}
+
+/* 07 bridge to 콘텐츠 디렉터 */
+.cv-next{display:grid;grid-template-columns:minmax(0,1fr) clamp(150px,17%,210px);gap:clamp(20px,3vw,48px);align-items:end;padding:clamp(28px,4vw,52px) clamp(24px,4vw,56px) 0;
+  border:0;border-radius:var(--r-xl);text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.cv-next:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.cv-next__txt{display:grid;gap:12px;padding-bottom:clamp(28px,4vw,52px)}
+.cv-next__h{font-size:clamp(22px,2.4vw,32px);font-weight:800;letter-spacing:-.04em;line-height:1.3}
+.cv-next__p{font-size:15.5px;color:var(--ink-2);line-height:1.7;max-width:44em}
+.cv-next__go{display:inline-flex;align-items:center;gap:8px;justify-self:start;margin-top:4px;padding:10px 16px;border-radius:999px;background:#fff;color:#0B0B0F;font-size:14.5px;font-weight:800}
+.cv-next__go .ic{width:16px;height:16px;transition:transform .35s var(--ease)}
+.cv-next:hover .cv-next__go .ic{transform:translateX(3px)}
+.cv-next__cut{width:100%;height:auto;margin-top:calc(-1 * clamp(40px,5vw,80px))}
+
+/* 08 DREAM */
+.cv-dream{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:clamp(16px,3vw,40px);align-items:end;overflow:hidden;padding:0 0 0 clamp(24px,4.4vw,64px)}
+.cv-dream .cv-ghost{right:-.02em;top:.1em;font-size:clamp(110px,16vw,236px)}
+.cv-dream__txt{display:grid;gap:16px;align-self:center;padding-block:clamp(36px,5vw,72px)}
+.cv-dream__txt h2{font-size:clamp(28px,3.2vw,44px);font-weight:800;letter-spacing:-.045em;line-height:1.24}
+.cv-dream__txt > p:not(.cv-head__k){font-size:16px;color:var(--ink-2);line-height:1.75;max-width:34em}
+.cv-dream__txt > p.cv-dream__now{font-weight:800;color:var(--ink)}
+.cv-dream__cut{width:100%;height:auto;align-self:end;margin-top:clamp(36px,5vw,76px)}
+
+@media (max-width:1100px){
+  .cv-onair{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cv-onair__txt{grid-column:1/-1}
+  .cv-anat{grid-template-columns:minmax(0,1fr) clamp(200px,30%,280px) minmax(0,1fr)}
+}
+/* below 1180 the glass card would reach the crew, so it drops under the photo */
+@media (max-width:1180px){
+  .cv-field img{aspect-ratio:16/8}
+  .cv-field__card{position:static;width:auto;border-radius:0;box-shadow:none;background:var(--bg-2);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .cv-field{background:var(--bg-2)}
+}
+@media (max-width:960px){
+  .cv-hero{grid-template-columns:minmax(0,1fr);gap:clamp(40px,8vw,64px)}
+  .cv-hero__fig{height:clamp(220px,40vw,300px);margin-top:clamp(28px,6vw,40px)}
+  .cv-hero__fig img{left:auto;right:clamp(16px,8vw,72px);height:118%;transform:none}
+  .cv-hero__fig .cv-ghost{left:clamp(16px,4vw,32px);top:auto;bottom:-.08em;transform:none;font-size:clamp(84px,19vw,150px)}
+  .cv-intro,.cv-atoz,.cv-gw{grid-template-columns:minmax(0,1fr)}
+  /* the timeline cut-out stands behind the top of the panel, so its lower half never meets the steps */
+  .cv-tl{grid-template-columns:minmax(0,1fr)}
+  .cv-tl__fig{grid-row:1;justify-self:end;width:clamp(150px,27vw,220px);margin:0 clamp(12px,5vw,56px) calc(-1 * clamp(150px,31vw,250px)) 0;z-index:0}
+  .cv-tl__panel{grid-row:2;margin-right:0;padding-right:clamp(22px,3.6vw,52px)}
+  .cv-hand{top:clamp(28px,6vw,56px);right:calc(100% + 6px)}
+  .cv-next{grid-template-columns:minmax(0,1fr) clamp(120px,22vw,170px)}
+}
+@media (max-width:760px){
+  .cv-yopd{grid-template-columns:minmax(0,1fr);margin-top:clamp(40px,8vw,56px)}
+  .cv-yopd__txt{padding-bottom:0}
+  .cv-yopd__fig{justify-self:end;width:clamp(160px,42vw,220px);margin:-8px -4px 0 0}
+  .cv-yopd .cv-ghost{left:-.04em;right:auto;font-size:clamp(96px,30vw,180px)}
+  .cv-onair{grid-template-columns:minmax(0,1fr)}
+  .cv-anat{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 16px;align-items:start}
+  .cv-anat__fig{grid-column:1/-1;grid-row:1;justify-self:center;width:min(250px,64%)}
+  .cv-anat__list--l li{grid-template-columns:28px minmax(0,1fr);text-align:left}
+  .cv-anat__list--l i{grid-column:1}
+  .cv-anat__list--l b,.cv-anat__list--l span{grid-column:2}
+  .cv-anat__list{gap:16px;align-content:start}
+  .cv-dream{grid-template-columns:minmax(0,1fr);padding:0 clamp(20px,5vw,40px)}
+  .cv-dream__txt{padding-bottom:0}
+  .cv-dream__cut{margin:8px calc(-1 * clamp(20px,5vw,40px)) 0;width:calc(100% + 2 * clamp(20px,5vw,40px))}
+  .cv-dream .cv-ghost{top:auto;bottom:.12em;right:auto;left:-.04em}
+}
+@media (max-width:600px){
+  .cv-hero__fig{height:220px}
+  .cv-intro{padding-top:28px}
+  .cv-field img{aspect-ratio:3/2}
+  .cv-gw__intro{grid-template-columns:64px minmax(0,1fr);gap:14px 16px}
+  .cv-gw__icon{width:64px;height:64px;border-radius:18px}
+  .cv-gw__intro .kpis,.cv-yopd .kpis{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .cv-gw__intro .kpis div,.cv-yopd .kpis div{padding:11px 10px}
+  .cv-gw__intro .kpis b,.cv-yopd .kpis b{font-size:17px}
+  .cv-gw__intro .kpis span,.cv-yopd .kpis span{font-size:12px}
+  .cv-steps::before{left:17px}
+  .cv-steps li{grid-template-columns:34px minmax(0,1fr);gap:2px 12px;align-items:start;padding:12px 0}
+  .cv-steps li::before{grid-row:1/span 2;align-self:start;width:24px;height:24px;font-size:11px}
+  .cv-steps li:first-child::before,.cv-steps li:last-child::before{width:34px;height:34px;font-size:9.5px}
+  .cv-steps li:not(:last-child)::after{left:46px}
+  .cv-steps span{grid-column:2;font-size:14.5px}
+  .cv-mv{grid-template-columns:minmax(0,1fr);padding-right:12px}
+  .cv-mv__txt{padding:4px 6px 8px}
+  .cv-anat{grid-template-columns:minmax(0,1fr)}
+  .cv-next{grid-template-columns:minmax(0,1fr) 108px;gap:8px}
+  .cv-next__txt{grid-column:1/-1;padding-bottom:0}
+  .cv-next__cut{grid-column:2;margin-top:-36px}
+}
 /* 미디어LAB thumbnails, side by side */
 .thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .thumb{position:relative;display:block;margin:0;aspect-ratio:16/9;overflow:hidden;border-radius:14px;background:var(--bg-3);box-shadow:0 0 0 1px var(--line)}
@@ -1389,14 +1619,63 @@ h1[tabindex="-1"]:focus{outline:none}
 
 <!-- =================================================================== CH03 YODELLAND -->
 <div class="view" id="yodel" data-label="개척형 크리에이터">
-  <section class="wrap phero" aria-labelledby="yd-title">
+  <section class="wrap phero cv-hero" aria-labelledby="yd-title">
+    <div class="cv-hero__txt">
     <div class="crumb"><b>CAREER 03</b><span>개척형 크리에이터</span></div>
-    <h1 class="h-1" id="yd-title">생소한 장르도 기획이면 됩니다.<br><span class="grad">요들로 만든 264만 회</span></h1>
-    <p class="lead">2019년 3월 '요들랜드TV, 쉽게 배우는 요들'을 열었습니다. 요PD로서 콘셉트와 출연진 섭외, 진행, 음향 믹싱, 편집, 썸네일 디렉팅까지 맡아 영상 15편 만에 구독자 1.1만 명, 편당 평균 조회수 약 10만 회(2020.10 기준)를 만들었습니다. 2026년 6월에는 기획형 콘텐츠로 포맷을 바꿔 시즌 2를 시작했고, 미디어·플랫폼 이슈를 해설하는 《이홍연의 미디어LAB》도 직접 만들고 있습니다.</p>
-    <div class="meta"><span class="chip">《요들랜드 TV》 기획 PD (요PD)</span><span class="chip">《이홍연의 미디어LAB》 채널 준비 중</span><span class="chip num">2019.03 –</span></div>
+      <h1 class="h-1" id="yd-title">요들을 누가 보냐고요?<br><span class="grad">264만 번 재생됐습니다</span></h1>
+      <p class="lead">남들이 안 하는 걸 해서 세상에 알리고 싶었고, 그래서 요들을 골랐습니다. 낯선 주제를 강좌, 라이브, M/V, 패러디로 바꿔 끝까지 보게 만드는 것. 그게 제 방식입니다.</p>
+      <p class="cv-hero__sub">2019년 3월 '요들랜드TV, 쉽게 배우는 요들'을 열고 아이템 구상부터 섭외, 촬영, 편집, 녹음·믹싱까지 직접 챙겨 <span class="mark">영상 15편 만에 구독자 1만 명</span>을 넘겼습니다.</p>
+      <div class="meta"><span class="chip">《요들랜드 TV》 요PD · 기획·제작</span><span class="chip">《관심사원》 · B봇 기획</span><span class="chip">《이홍연의 미디어LAB》 채널 준비 중</span><span class="chip num">2018 –</span></div>
+    </div>
+    <figure class="cv-hero__fig">
+      <span class="cv-bg" aria-hidden="true"><span class="cv-ghost">YODEL</span></span>
+      <img src="assets/img/cv/hero-megaphone.webp" alt="파란 요들 의상에 모자를 쓰고 확성기로 외치는 이홍연" width="545" height="1000" loading="lazy">
+    </figure>
   </section>
   <section class="wrap" style="padding-bottom:clamp(24px,3vw,40px)">
-    <div class="block">
+
+    <!-- 01 IMAGINE: the webzine story that frames this page -->
+    <div class="block" id="yd-imagine">
+      <div class="cv-head rv"><p class="cv-head__k"><b>01</b>IMAGINE</p><h2>「홍연의 상상은 현실이 된다」</h2><p>SK브로드밴드 사내 웹진 B log Vol.63 Story+ · 2021.01</p></div>
+      <figure class="cv-cover rv"><img src="assets/img/cv/webzine-cover.webp" alt="사내 웹진 B log Vol.63 Story+ 기사 첫 화면: 「홍연의 상상은 현실이 된다」 제목과 IMAGINE 글자 앞, 링라이트와 모니터 사이에서 웃는 이홍연과 요들·B봇 차림의 컷들" width="1614" height="862" loading="lazy"></figure>
+      <div class="cv-intro">
+        <span class="cv-ghost cv-ghost--line" aria-hidden="true">IMAGINE</span>
+        <p class="cv-intro__big rv">저는 욕심이 많습니다. 상상을 현실로 만들기 위해 몰두하고, 발로 뛰고, 같은 것도 다른 관점에서 한 번 더 봅니다.</p>
+        <div class="cv-intro__body rv">
+          <p>어린 시절 꿈은 프로 바둑기사였습니다. 바둑 개인 방송을 해 보려고 2015년 영상 제작 학원에 다닌 것이 크리에이터로서의 첫 시작이었습니다. 2017년 입사 후 한동안 미뤄 둔 콘텐츠 제작을 2018년에 다시 시작했습니다.</p>
+          <p>그래서 제게 욕심은 좋아하는 것을 오래 지속하게 하는 힘입니다. 사소한 것까지 직접 챙기며 발로 뛴 콘텐츠 제작기를 소개합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 YO PD: choosing the item, from yodeller to producer -->
+    <div class="block" id="yd-yopd">
+      <div class="cv-head rv"><p class="cv-head__k"><b>02</b>YO PD</p><h2>우리, 재미있는 거 해 보지 않을래?</h2><p>2018 – 2019 · 아이템을 고르고 크루를 꾸리기까지</p></div>
+      <div class="cv-panel cv-yopd rv">
+        <span class="cv-bg" aria-hidden="true"><span class="cv-ghost">YO PD</span></span>
+        <div class="cv-yopd__txt">
+          <p>2018년 초, 회사 생활에 어느 정도 적응하자 친한 친구 두 명에게 '재미있는 걸' 해 보자고 제안했습니다. 셋이 몇 주 동안 스터디한 끝에 꽂힌 아이템이 요들이었습니다. 희소성과 파급력을 함께 가진 아이템이라고 판단했습니다.</p>
+          <p>그 길로 요들송 학원에 등록해 선생님께 계획을 이야기했고, 그때 만난 선생님은 채널의 일등 공신 '요들언니'가 됐습니다. 시작은 셋이었지만 친구들이 각자의 일로 바빠지면서 제가 제작을 이끌게 됐습니다.</p>
+          <div class="kpis">
+            <div><b class="num">2018<small>초</small></b><span>요들을 아이템으로 결정</span></div>
+            <div><b class="num">2<small>년</small></b><span>영상 제작·요들송 학원</span></div>
+            <div><b class="num">2019.03</b><span>요들랜드TV 개설</span></div>
+          </div>
+        </div>
+        <figure class="cv-yopd__fig"><img src="assets/img/cv/yopd-think.webp" alt="요들 조끼에 모자를 쓰고 턱을 괸 채 생각에 잠긴 이홍연" width="498" height="1000" loading="lazy"></figure>
+      </div>
+      <figure class="cv-field rv">
+        <img src="assets/img/cv/crew-field.webp" alt="갈대밭에서 기타, 크로마하프, 악기 케이스, 바이올린을 들고 나란히 선 요들 크루와 이홍연" width="1520" height="572" loading="lazy">
+        <figcaption class="cv-field__card">
+          <h3>'요들러 이홍연'에서<br>'요PD 이홍연'으로</h3>
+          <p>요들의 핵심인 꺾기와 발음이 뜻대로 되지 않자, 요들러 대신 판을 짜는 요PD의 길을 택했습니다. 영상 제작 학원과 요들송 학원을 2년 정도 다니며 요들 크루를 꾸렸고, 우리나라의 숨은 고수 '요들행님'도 만났습니다.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- 03 YODELLAND TV: the channel and its numbers -->
+    <div class="block" id="yd-channel">
+      <div class="cv-head rv"><p class="cv-head__k"><b>03</b>YODELLAND TV</p><h2>영상 15편, 평균 조회수 10만 회</h2><p>생소한 요들을 최대한 많은 사람에게 알리려고 강좌, 라이브, M/V, 패러디로 포맷을 바꿔 가며 실험했습니다. 영상 15편으로 평균 조회수 10만 회, 구독자 1.3만 명을 모았고(웹진 인터뷰, 2020.12 기준), 2026년 6월에는 새 포맷으로 시즌 2를 시작했습니다.</p></div>
       <div class="yodel">
         <div class="yt rv" role="group" aria-label="유튜브 요들랜드TV 채널 홈 화면 재현: 구독자 1.4만명, 동영상 25개, 인기순 동영상 목록">
           <div class="yt__chrome" aria-hidden="true">
@@ -1445,6 +1724,148 @@ h1[tabindex="-1"]:focus{outline:none}
         </aside>
       </div>
       <p class="note">조회수·구독자: YouTube 공개 데이터, 2026.10.23 기준 · 썸네일을 누르면 해당 영상으로 이동합니다</p>
+      <div class="two cv-then">
+        <figure class="rv"><a class="media golink" style="aspect-ratio:16/9" href="https://www.youtube.com/@yodelland/videos" target="_blank" rel="noopener" aria-label="요들랜드TV 채널 새 창으로 보기"><img src="assets/img/yd-2020home.webp" alt="2020년 7월 요들랜드TV 채널 홈 화면 캡처" width="1600" height="900" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>채널 보기</span></a><figcaption class="cap">2020.07 채널 홈 · 영상 15편, 구독자 1.13만</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:16/9" href="https://www.youtube.com/shorts/KjnLErayI4I" target="_blank" rel="noopener" aria-label="요들랜드 시즌 2 쇼츠 새 창으로 보기"><img src="assets/img/yd-solo.webp" alt="요들 모자를 쓰고 스튜디오 마이크 앞에서 노래하는 이홍연" width="1080" height="810" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>쇼츠 보기</span></a><figcaption class="cap">시즌 2 쇼츠 「열심히 성장하는 요린이입니다」 · 2026</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 04 A TO Z: the one-person studio and the production timeline -->
+    <div class="block" id="yd-atoz">
+      <div class="cv-head rv"><p class="cv-head__k"><b>04</b>A TO Z</p><h2>모든 걸 직접 하는 1인 제작사</h2><p>2019 말 · 반지하 공간을 직접 고쳐 만든 28평 스튜디오</p></div>
+      <div class="cv-atoz">
+        <figure class="cv-set rv">
+          <span class="cv-ghost" aria-hidden="true">A TO Z</span>
+          <img src="assets/img/cv/atoz-gear.webp" alt="책상 위 스톰트루퍼 헬멧, 짐벌, 미니 삼각대, 캐릭터 마이크, 삼각대에 올린 카메라와 TV 탈 상자 사이에서 웃는 넥타이 차림의 이홍연" width="1400" height="775" loading="lazy">
+        </figure>
+        <div class="cv-atoz__txt rv">
+          <p>카페에서 편집하다 한계를 느껴 6평 남짓한 옥탑방에 노트북과 카메라, 짐벌, 조명, 음향 장비를 하나씩 갖췄습니다. 2019년 말 요들랜드를 본격적으로 시작하면서 28평 스튜디오로 옮겼습니다. 허름한 반지하 공간을 직접 도배하고 방음벽을 붙여, 제 작업 방식에 딱 맞게 만든 스튜디오입니다.</p>
+          <dl class="cv-spec" aria-label="요PD 스튜디오 장비">
+            <div><dt>촬영</dt><dd>Sony·Canon 카메라, 짐벌, 촬영용 스마트폰 2대</dd></div>
+            <div><dt>조명</dt><dd>룩스원라이트, 룩스패드 2EA, 레일 조명</dd></div>
+            <div><dt>음향</dt><dd>콘덴서 마이크, 오디오 인터페이스, 모니터링 헤드셋</dd></div>
+            <div><dt>편집</dt><dd>편집용 PC, 노트북 4대, 대형 모니터 3대</dd></div>
+            <div><dt>소품·악기</dt><dd>크로마하프, 아코디언, 피아노, 칠판, 이동식 바둑판</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="cv-tl">
+        <div class="cv-tl__panel rv">
+          <div class="cv-tl__top">
+            <p class="cv-tl__k">Franzl Lang 커버 M/V 「Auf und auf voll Lebenslust」</p>
+            <h3>'요PD'의 콘텐츠 제작 타임라인</h3>
+            <p>주목도 높은 콘텐츠는 아이템도 중요하지만, 어떻게 포장하고 가공해 몰입도를 높이느냐가 핵심이라고 생각합니다. 가장 공들인 M/V 한 편의 제작 과정입니다.</p>
+          </div>
+          <ol class="cv-steps">
+            <li><b>아이템 구상</b><span>세계적인 요들러의 대표곡을 한국식 감성으로 커버하면 어떨까?</span></li>
+            <li><b>섭외</b><span>숨은 고수 '요들행님'이 대구에서 서울로 출동했습니다.</span></li>
+            <li><b>장소 선정</b><span>요들 감성에 맞는 안성 팜랜드와 과천 경마공원, 두 곳을 골랐습니다.</span></li>
+            <li><b>의상·소품 준비</b><span>스위스 전통 의상을 해외 직구로 구했습니다.</span></li>
+            <li><b>촬영</b><span>친구와 함께 짐벌을 들고 직접 찍었습니다.</span></li>
+            <li><b>편집 <i>7일</i></b><span>박진감과 레트로 감성을 살리려 트랜지션을 활용했습니다.</span></li>
+            <li><b>녹음·믹싱 <i>2일</i></b><span>트랙을 나눠 한 소절씩 녹음하고 틀린 음정을 보정했습니다.</span></li>
+            <li><b>업로드 완료</b><span>클릭률을 높이려 썸네일과 제목까지 고민했습니다.</span></li>
+          </ol>
+        </div>
+        <figure class="cv-tl__fig">
+          <p class="cv-hand">처음부터 끝까지!<br>직접 했습니다!</p>
+          <img src="assets/img/cv/timeline-autoharp.webp" alt="파란 요들 의상을 입고 크로마하프를 품에 안은 채 서 있는 이홍연" width="442" height="1200" loading="lazy">
+        </figure>
+      </div>
+      <a class="cv-mv golink rv" href="https://www.youtube.com/watch?v=VfvDleW2m8s" target="_blank" rel="noopener" aria-label="요들송 M/V 새 창으로 보기">
+        <span class="cv-mv__th"><img src="assets/img/yt/VfvDleW2m8s.webp" alt="요들송 M/V 썸네일" width="640" height="360" loading="lazy"><span class="yt__len">2:44</span><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></span>
+        <span class="cv-mv__txt"><em>RESULT</em><b>이렇게 만든 M/V는 조회수 15만 회를 넘겼고, 지금은 21만 회입니다</b><small>15만+: 웹진 인터뷰 2020.12 기준 · 21만: YouTube 공개 데이터, 2026.10.23 기준</small></span>
+      </a>
+    </div>
+
+    <!-- 05 ON AIR: broadcast and creator collaborations -->
+    <div class="block" id="yd-onair">
+      <div class="cv-head rv"><p class="cv-head__k"><b>05</b>ON AIR</p><h2>펭수 무대에서 〈마이 리틀 텔레비전〉 촬영장까지</h2><p>EBS 펭수 · MBC 〈마이 리틀 텔레비전〉 · MBN · tvN · 아프리카TV 도아TV</p></div>
+      <div class="cv-onair">
+        <div class="card cv-onair__txt rv">
+          <p>펭수 초창기 홍대 공연을 함께한 인연으로 요들랜드 팀이 MBC 〈마이 리틀 텔레비전〉에 나갔고, 저는 촬영장 비하인드를 직접 찍었습니다. 개그맨과의 콜라보 방송, 아프리카TV 도아TV 합방도 이어졌습니다.</p>
+          <p class="cv-onair__q">섭외 연락은 PD인 제가 받았지만, 무대의 주인공은 뛰어난 선생님들이었습니다.</p>
+        </div>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=fOAehDdIusk" target="_blank" rel="noopener" aria-label="마리텔 촬영장 비하인드 영상 새 창으로 보기"><img src="assets/img/yd-maritel.webp" alt="MBC 마이리틀텔레비전 촬영 현장에서 크리에이터 도티와 손을 흔드는 이홍연" width="1400" height="944" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">MBC 〈마이 리틀 텔레비전〉 촬영장 비하인드 · 2019</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=pgG7t-5jhFk" target="_blank" rel="noopener" aria-label="도아TV 합방 영상 새 창으로 보기"><img src="assets/img/yd-doa.webp" alt="아프리카TV 도아TV 합동 방송 화면" width="1299" height="683" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">아프리카TV 도아TV 합방 · 조회수 49만 회</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 06 B-BOT: the company comedy pilot and the character he built -->
+    <div class="block" id="yd-gwansim">
+      <div class="cv-head rv"><p class="cv-head__k"><b>06</b>B-BOT</p><h2>'관심사원'과 세계 최초 인간형 IPTV 'B봇'</h2><p>2020 · 회사 유튜브 예능 기획 · 채널 공개는 코로나19로 보류</p></div>
+      <div class="cv-gw">
+        <div class="card cv-gw__intro rv">
+          <img class="cv-gw__icon" src="assets/img/cv/gwansim-icon.webp" alt="관심사원 채널 아이콘: 관심사원 로고 옆에서 사원증을 건 셔츠 차림으로 웃는 이홍연" width="480" height="480" loading="lazy">
+          <div class="cv-gw__body">
+            <h3>회사 이야기를 예능으로</h3>
+            <p>요들랜드를 잠시 멈춘 뒤, 그동안 쌓은 제작 역량으로 회사에 기여할 콘텐츠를 만들고 싶었습니다. 회사 이야기를 전하는 4차원 리얼 예능 '관심사원'을 기획하고, 요들과 바둑이 특기인 B급 직장인 '관심사원'이 메인 진행을, 인간형 IPTV 'B봇'이 상대역을 맡는 구조로 설계했습니다.</p>
+          </div>
+          <div class="kpis">
+            <div><b class="num">60<small>여 개</small></b><span>회차 아이디어</span></div>
+            <div><b class="num">12<small>종</small></b><span>회차 썸네일</span></div>
+            <div><b class="num">3–8<small>분</small></b><span>스낵형 포맷</span></div>
+          </div>
+        </div>
+        <figure class="cv-gw__pitch rv">
+          <div class="media"><img src="assets/img/cv/gwansim-pitch.webp" alt="여러 대의 화면 앞에서 관심사원 콘텐츠를 가리키며 발표하는 이홍연" width="1122" height="810" loading="lazy"></div>
+          <figcaption class="cap"><b>'신개념 화상발표'</b> 화상 회의에 관심이 높던 시기, 채널 기획 발표 자체를 예능으로 꾸며 직접 진행했습니다 · 2020</figcaption>
+        </figure>
+      </div>
+      <div class="cv-bbot rv">
+        <div class="cv-bbot__head">
+          <p class="cv-bbot__k">한 땀 한 땀 만든 B봇</p>
+          <h3>펭수 같은 B tv 캐릭터를 만들고 싶었습니다</h3>
+          <p>회사 주력 상품인 IPTV를 머리에 쓰는 콘셉트로 '세계 최초 인간형 인공지능 IPTV' B봇을 설계하고, 탈부터 의상까지 직접 구하고 만들었습니다.</p>
+        </div>
+        <div class="cv-anat">
+          <ul class="cv-anat__list cv-anat__list--l">
+            <li><i>1</i><b>IPTV 탈</b><span>문구점 재료로 직접 만든 TV 탈</span></li>
+            <li><i>2</i><b>선글라스</b><span>영화 〈매트릭스〉 선글라스 오마주</span></li>
+          </ul>
+          <figure class="cv-anat__fig">
+            <img src="assets/img/cv/bbot-anatomy.webp" alt="B봇 의상을 직접 입고 댑 포즈를 취한 이홍연(2020 웹진 화보): TV 탈, 선글라스, 스톰트루퍼 의상, 라텍스 장갑, 무릎 보호대" width="643" height="1200" loading="lazy">
+            <span class="cv-pin" style="--x:6%;--y:23%" aria-hidden="true">1</span>
+            <span class="cv-pin" style="--x:30%;--y:15%" aria-hidden="true">2</span>
+            <span class="cv-pin" style="--x:90%;--y:5%" aria-hidden="true">3</span>
+            <span class="cv-pin" style="--x:50%;--y:31%" aria-hidden="true">4</span>
+            <span class="cv-pin" style="--x:74%;--y:66%" aria-hidden="true">5</span>
+          </figure>
+          <ul class="cv-anat__list cv-anat__list--r">
+            <li><i>3</i><b>장갑</b><span>차량 정비에 쓰는 라텍스 장갑</span></li>
+            <li><i>4</i><b>의상</b><span>스톰트루퍼 의상을 직구해 동대문에서 몸에 맞게 수선</span></li>
+            <li><i>5</i><b>무릎 보호대</b><span>동묘 거리에서 득템</span></li>
+          </ul>
+        </div>
+        <p class="cv-bbot__foot">사진은 웹진 화보에서 제가 직접 입은 모습이고, 관심사원 파일럿에서는 대학 후배가 B봇을 연기했습니다. B봇은 같은 해 SK그룹 toktokTV 'Best Creator를 찾아라' 대상으로 이어졌습니다.</p>
+      </div>
+    </div>
+
+    <!-- 07 bridge to the PD career -->
+    <div class="block">
+      <a class="card is-dark cv-next rv" href="#pd">
+        <span class="cv-next__txt">
+          <span class="cv-head__k"><b>07</b>NEW CHALLENGE</span>
+          <span class="cv-next__h">새로운 도전, 《B tv 이동진의 파이아키아》 진행자로 발탁</span>
+          <span class="cv-next__p">관심사원 준비 과정을 지켜본 팀장님의 추천으로 2020년 8월부터 영화평론가 이동진과 함께 채널을 진행했습니다. 팀장님이 제 B급 감성과 엉뚱함을 좋게 봐 주신 덕분입니다. 영화 비전문가가 평론가와 함께 진행하는 실험은 4년간 이어졌습니다.</span>
+          <span class="cv-next__go">콘텐츠 디렉터 이야기 보기<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </span>
+        <img class="cv-next__cut" src="assets/img/cv/pointing.webp" alt="" width="574" height="800" loading="lazy">
+      </a>
+    </div>
+
+    <!-- 08 DREAM: closing -->
+    <div class="block" id="yd-dream">
+      <div class="cv-panel cv-dream rv">
+        <span class="cv-bg" aria-hidden="true"><span class="cv-ghost">Dream</span></span>
+        <div class="cv-dream__txt">
+          <p class="cv-head__k"><b>08</b>DREAM</p>
+          <h2>꿈꾸는 대로,<br>무한한 세계를<br>만들어 나가는 것</h2>
+          <p>요들러가 되고 싶었지만 먼저 요PD가 되었습니다. 그렇다고 요들러의 꿈을 접은 적은 없습니다. 제가 꿈꾸는 방식대로, 사람들에게 보여 드릴 수 있는 세계를 계속 넓혀 가고 싶습니다.</p>
+          <p class="cv-dream__now">그다음 장이 요들랜드 시즌 2, 그리고 준비 중인 《이홍연의 미디어LAB》입니다.</p>
+        </div>
+        <img class="cv-dream__cut" src="assets/img/cv/dream.webp" alt="크로마하프와 아코디언 앞에 누워 꽃 장식 빗자루를 든 채 웃는 이홍연" width="1200" height="922" loading="lazy">
+      </div>
     </div>
     <div class="block">
       <div class="block-title"><h2>《이홍연의 미디어LAB》</h2><p>채널 오픈 준비 중</p></div>
@@ -1463,15 +1884,6 @@ h1[tabindex="-1"]:focus{outline:none}
       <div class="thumbs rv">
         <figure class="thumb"><img src="assets/img/ml/yeneung2.webp" alt="썸네일: 예능이 고이는 이유, 런닝맨 19년·1박 2일 19년·나 혼자 산다 13년" width="1280" height="720" loading="lazy"></figure>
         <figure class="thumb"><img src="assets/img/ml/drama.webp" alt="썸네일: 주연배우들만 빌딩 쇼핑, 드라마·영화 업계 양극화" width="1280" height="720" loading="lazy"></figure>
-      </div>
-    </div>
-    <div class="block">
-      <div class="block-title"><h2>방송·크리에이터 협업</h2><p>EBS 펭수 · MBC 〈마이 리틀 텔레비전〉 · MBN · tvN · 아프리카TV 도아TV</p></div>
-      <div class="four">
-        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=fOAehDdIusk" target="_blank" rel="noopener" aria-label="마리텔 촬영장 비하인드 영상 새 창으로 보기"><img src="assets/img/yd-maritel.webp" alt="MBC 마이리틀텔레비전 촬영 현장에서 크리에이터 도티와 손을 흔드는 이홍연" width="1400" height="944" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">MBC 〈마이 리틀 텔레비전〉 촬영장 비하인드 · 2019</figcaption></figure>
-        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=pgG7t-5jhFk" target="_blank" rel="noopener" aria-label="도아TV 합방 영상 새 창으로 보기"><img src="assets/img/yd-doa.webp" alt="아프리카TV 도아TV 합동 방송 화면" width="1299" height="683" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">아프리카TV 도아TV 합방 · 조회수 49만 회</figcaption></figure>
-        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/@yodelland/videos" target="_blank" rel="noopener" aria-label="요들랜드TV 채널 새 창으로 보기"><img src="assets/img/yd-2020home.webp" alt="2020년 7월 요들랜드TV 채널 홈 화면 캡처" width="1600" height="900" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>채널 보기</span></a><figcaption class="cap">2020.07 채널 홈 · 영상 15편, 구독자 1.13만</figcaption></figure>
-        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/shorts/KjnLErayI4I" target="_blank" rel="noopener" aria-label="요들랜드 시즌 2 쇼츠 새 창으로 보기"><img src="assets/img/yd-solo.webp" alt="요들 모자를 쓰고 스튜디오 마이크 앞에서 노래하는 이홍연" width="1080" height="810" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>쇼츠 보기</span></a><figcaption class="cap">시즌 2 쇼츠 「열심히 성장하는 요린이입니다」 · 2026</figcaption></figure>
       </div>
     </div>
     <div class="related"><a href="#lec-03"><b>관련 강의 03</b>뉴미디어 콘텐츠 제작 및 유튜브 등 콘텐츠 기획</a><a href="#lec-04"><b>관련 강의 04</b>숏폼 콘텐츠 제작 및 바이럴 전략</a></div>
@@ -1527,7 +1939,7 @@ h1[tabindex="-1"]:focus{outline:none}
         </div>
       </article>
       <article class="card case rv">
-        <figure class="media case__media"><img src="assets/img/mkt-webzine.webp" alt="사내 웹진 커버: 홍연의 상상은 현실이 된다" width="1614" height="862" loading="lazy"></figure>
+        <figure class="media case__media"><img src="assets/img/cv/webzine-cover.webp" alt="사내 웹진 B log Vol.63 Story+ 첫 화면: 홍연의 상상은 현실이 된다" width="1614" height="862" loading="lazy"></figure>
         <div class="case__body">
           <span class="case__tag">CASE 04 <span>Employeencer</span></span>
           <h3>영업사원에서 '1인 제작사'로,<br>브랜드의 얼굴이 되다</h3>
