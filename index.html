@@ -589,6 +589,21 @@ h1[tabindex="-1"]:focus{outline:none}
 .contact::before{content:"";position:absolute;right:-12%;top:-18%;width:760px;height:760px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,106,51,.32),transparent 70%);pointer-events:none}
 .contact .wrap{position:relative;padding-block:clamp(72px,9vw,128px) clamp(48px,6vw,80px)}
 .contact h1{max-width:13em}
+/* the speaker's portrait sits beside the headline, like the face on a business card */
+.contact__top{display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,28%,340px);gap:clamp(28px,5vw,72px);align-items:end}
+.contact__me{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:var(--r-lg);background:#16161C;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 80px -40px rgba(255,106,51,.45)}
+.contact__me img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.contact__me::after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(transparent,rgba(11,11,15,.88))}
+.contact__me figcaption{position:absolute;left:20px;right:20px;bottom:18px;z-index:1;display:grid;gap:4px;color:#fff}
+.contact__me b{font-size:20px;font-weight:800;letter-spacing:-.03em}
+.contact__me span{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78)}
+@media (max-width:760px){
+  .contact__top{grid-template-columns:minmax(0,1fr);gap:0}
+  .contact__me{order:-1;display:flex;align-items:center;gap:14px;margin-bottom:26px;aspect-ratio:auto;overflow:visible;border-radius:0;background:none;box-shadow:none}
+  .contact__me img{flex:none;width:76px;height:76px;border-radius:22px;object-position:50% 25%}
+  .contact__me::after{display:none}
+  .contact__me figcaption{position:static}
+}
 .ask{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:28px}
 .ask .card{padding:20px}
 .ask b{font-size:13px;font-weight:800;color:var(--accent-ink)}
@@ -1681,9 +1696,17 @@ h1[tabindex="-1"]:focus{outline:none}
 <!-- =================================================================== CONTACT -->
 <div class="view contact is-dark" id="contact" data-label="강의 문의">
   <section class="wrap" aria-labelledby="contact-title">
-    <span class="pill pill--live">강의·자문 문의 접수 중</span>
-    <h1 class="h-display" id="contact-title" style="margin-top:22px">현장에서 증명한 이야기를<br><span class="grad">귀사의 조직</span>에 맞춰 전합니다</h1>
-    <p class="lead" style="margin-top:22px">기업 교육, 특강, 워크숍, 콘텐츠·GEO 자문 문의를 받습니다.</p>
+    <div class="contact__top">
+      <div>
+        <span class="pill pill--live">강의·자문 문의 접수 중</span>
+        <h1 class="h-display" id="contact-title" style="margin-top:22px">현장에서 증명한 이야기를<br><span class="grad">귀사의 조직</span>에 맞춰 전합니다</h1>
+        <p class="lead" style="margin-top:22px">기업 교육, 특강, 워크숍, 콘텐츠·GEO 자문 문의를 받습니다.</p>
+      </div>
+      <figure class="contact__me">
+        <img src="assets/img/profile.webp" alt="베이지 수트를 입은 이홍연 프로필 사진" width="1200" height="1200" loading="lazy">
+        <figcaption><b>이홍연</b><span>AI·미디어 콘텐츠 디렉터 · 기업 강사</span></figcaption>
+      </figure>
+    </div>
     <div class="ccards">
       <div class="card ccard">
         <span class="ccard__k"><span><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span>전화 · 문자</span>
