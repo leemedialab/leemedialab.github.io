@@ -154,6 +154,7 @@ a.media:hover img,.hoverzoom:hover .media img{transform:scale(1.04)}
   background:rgba(11,11,15,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;font-size:13px;font-weight:800;letter-spacing:-.01em;white-space:nowrap;
   box-shadow:0 6px 18px -8px rgba(0,0,0,.55);transition:background .2s,transform .2s}
 .go .ic{width:15px;height:15px}
+.vid .media{position:relative}
 .golink:hover .go,.golink:focus-visible .go,.vid:hover .go{background:var(--accent-fill);transform:translateY(-1px)}
 .golink + .cap::after{content:" ↗";font-weight:800;color:var(--accent-ink)}
 @media (max-width:600px){.go{top:8px;right:8px;height:28px;padding:0 10px 0 9px;font-size:12px}}
@@ -368,7 +369,8 @@ h1[tabindex="-1"]:focus{outline:none}
 .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .feature-big{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:16px}
-.feature-big .media{min-height:100%}
+/* the photo fills its own column at the height of the cards beside it (an aspect-ratio here made it spill under them) */
+.feature-big > .media{width:100%;justify-self:stretch;min-height:100%}
 .figure-card{display:flex;flex-direction:column;justify-content:space-between;gap:28px}
 .figure-card .stat__num{font-size:clamp(64px,8vw,120px)}
 .figure-card h3{font-size:19px;font-weight:800;letter-spacing:-.03em}
@@ -457,6 +459,10 @@ h1[tabindex="-1"]:focus{outline:none}
 .award p{font-size:15px;line-height:1.65;color:#fff}
 .award__fig{width:100%;height:auto;margin-top:14px;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
 .miles em{font-style:normal;font-size:13.5px;font-weight:800;color:var(--accent-ink)}
+.miles a.card{display:block;color:inherit;text-decoration:none;transition:border-color .2s,transform .35s var(--ease),box-shadow .35s var(--ease)}
+.miles a.card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow)}
+.miles .more{display:inline-flex;align-items:center;gap:5px;margin-top:14px;font-style:normal;font-size:13px;font-weight:800;color:var(--accent-ink)}
+.miles .more .ic{width:14px;height:14px}
 .miles b{display:block;margin-top:8px;font-size:17px;font-weight:800;letter-spacing:-.03em}
 .miles span{display:block;margin-top:6px;font-size:14px;color:var(--ink-2);line-height:1.6}
 
@@ -711,6 +717,7 @@ h1[tabindex="-1"]:focus{outline:none}
 }
 @media (max-width:960px){
   .hero__grid,.speaker,.feature-big,.prog{grid-template-columns:minmax(0,1fr)}
+  .feature-big > .media{min-height:0;aspect-ratio:16/11}
   .portrait{justify-self:start;max-width:440px}
   .speaker__photo{position:static}
   .speaker__photo .media{aspect-ratio:16/11}
@@ -1098,7 +1105,7 @@ h1[tabindex="-1"]:focus{outline:none}
   <section class="wrap" style="padding-bottom:clamp(24px,3vw,40px)">
     <div class="block">
       <div class="feature-big">
-        <figure class="media rv" style="aspect-ratio:16/11"><img src="assets/img/pd-two.webp" alt="DVD 서가 앞에서 이동진 평론가와 크게 웃는 이홍연" width="1400" height="788" loading="lazy"></figure>
+        <a class="media golink rv" href="https://www.youtube.com/channel/UCuKKkBSGK4e9fuaquWXorJg" target="_blank" rel="noopener" aria-label="《B tv 이동진의 파이아키아》 유튜브 채널 새 창으로 보기"><img src="assets/img/pd-two.webp" alt="DVD 서가 앞에서 이동진 평론가와 크게 웃는 이홍연" width="1400" height="788" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>채널 보기</span></a>
         <div class="fb-side">
           <div class="card quote is-dark rv">
             <span class="eyebrow">Noxinfluencer · 2023.06</span>
@@ -1162,9 +1169,9 @@ h1[tabindex="-1"]:focus{outline:none}
     <div class="block">
       <div class="block-title"><h2>대표 영상</h2><p>조회수 2026.08 기준</p></div>
       <div class="three">
-        <a class="vid hoverzoom rv" href="https://www.youtube.com/@Btv%EC%9D%B4%EB%8F%99%EC%A7%84%EC%9D%98%ED%8C%8C%EC%9D%B4%EC%95%84%ED%82%A4%EC%95%84" target="_blank" rel="noopener"><span class="media"><img src="assets/img/pd-v1.webp" alt="관객은 9점, 이동진은 2점?! 썸네일" width="1079" height="607" loading="lazy"><span class="vid__views">조회수 279만</span></span><h3>관객은 9점 이동진은 2점?! 논란의 한국영화 TOP 10</h3><p>2021.04.02</p></a>
-        <a class="vid hoverzoom rv" href="https://www.youtube.com/@Btv%EC%9D%B4%EB%8F%99%EC%A7%84%EC%9D%98%ED%8C%8C%EC%9D%B4%EC%95%84%ED%82%A4%EC%95%84" target="_blank" rel="noopener"><span class="media"><img src="assets/img/pd-v2.webp" alt="역대 엔딩신 베스트 7 썸네일" width="1081" height="608" loading="lazy"><span class="vid__views">조회수 69만</span></span><h3>'영화 미학의 정점' [역대 엔딩신 best 7]</h3><p>2023.04.22</p></a>
-        <a class="vid hoverzoom rv" href="https://www.youtube.com/@Btv%EC%9D%B4%EB%8F%99%EC%A7%84%EC%9D%98%ED%8C%8C%EC%9D%B4%EC%95%84%ED%82%A4%EC%95%84" target="_blank" rel="noopener"><span class="media"><img src="assets/img/pd-v3.webp" alt="50만 Q&amp;A 썸네일" width="1081" height="608" loading="lazy"><span class="vid__views">조회수 26만</span></span><h3>모든 Q&amp;A 영상 통틀어 가장 유익합니다 (50만 Q&amp;A)</h3><p>2024.01.26</p></a>
+        <a class="vid hoverzoom rv" href="https://www.youtube.com/watch?v=H17IC5XeCpU" target="_blank" rel="noopener"><span class="media"><img src="assets/img/pd-v1.webp" alt="관객은 9점, 이동진은 2점?! 썸네일" width="1079" height="607" loading="lazy"><span class="vid__views">조회수 279만</span><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></span><h3>관객은 9점 이동진은 2점?! 논란의 한국영화 TOP 10</h3><p>2021.04.02</p></a>
+        <a class="vid hoverzoom rv" href="https://www.youtube.com/watch?v=KraWbLPqFUM" target="_blank" rel="noopener"><span class="media"><img src="assets/img/pd-v2.webp" alt="역대 엔딩신 베스트 7 썸네일" width="1081" height="608" loading="lazy"><span class="vid__views">조회수 69만</span><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></span><h3>'영화 미학의 정점' [역대 엔딩신 best 7]</h3><p>2023.04.22</p></a>
+        <a class="vid hoverzoom rv" href="https://www.youtube.com/watch?v=V-pXHYAXHYc" target="_blank" rel="noopener"><span class="media"><img src="assets/img/pd-v3.webp" alt="50만 Q&amp;A 썸네일" width="1081" height="608" loading="lazy"><span class="vid__views">조회수 26만</span><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></span><h3>모든 Q&amp;A 영상 통틀어 가장 유익합니다 (50만 Q&amp;A)</h3><p>2024.01.26</p></a>
       </div>
     </div>
     <div class="block">
@@ -1177,10 +1184,10 @@ h1[tabindex="-1"]:focus{outline:none}
     <div class="block">
       <div class="miles">
         <div class="card rv"><em>2020.11</em><b>SK그룹 toktokTV 대상</b><span>'Best Creator를 찾아라' · B봇 캐릭터 영상</span></div>
-        <div class="card rv"><em>2021.05</em><b>씨네마피아 3개월, 3.6배</b><span>B tv 유니버스 영화 콘텐츠로 구독자 2.1만 → 7.6만</span></div>
-        <div class="card rv"><em>2021.07</em><b>실버버튼</b><span>구독자 10만 돌파</span></div>
-        <div class="card rv"><em>2023.12</em><b>Global Influencer Award</b><span>국회도서관장상 (채널 수상, 언론 보도)</span></div>
-        <div class="card rv"><em>2024.01</em><b>구독자 50만 돌파</b><span>파이낸셜뉴스 등 언론 보도</span></div>
+        <a class="card rv" href="https://www.youtube.com/channel/UCP8AwWrEOxNrrjUVCE5jXJQ" target="_blank" rel="noopener"><em>2021.05</em><b>씨네마피아 3개월, 3.6배</b><span>B tv 유니버스 영화 콘텐츠로 구독자 2.1만 → 7.6만</span><i class="more">채널 보기<svg class="ic" aria-hidden="true"><use href="#i-out"/></svg></i></a>
+        <a class="card rv" href="https://www.youtube.com/watch?v=ouqMBrsz_uY" target="_blank" rel="noopener"><em>2021.07</em><b>실버버튼</b><span>구독자 10만 돌파 · 언박싱 라이브</span><i class="more">영상 보기<svg class="ic" aria-hidden="true"><use href="#i-out"/></svg></i></a>
+        <a class="card rv" href="https://www.metroseoul.co.kr/article/20240121500129" target="_blank" rel="noopener"><em>2023.12</em><b>Global Influencer Award</b><span>국회도서관장상 (채널 수상, 언론 보도)</span><i class="more">기사 보기<svg class="ic" aria-hidden="true"><use href="#i-out"/></svg></i></a>
+        <a class="card rv" href="https://www.fnnews.com/news/202401201301084131" target="_blank" rel="noopener"><em>2024.01</em><b>구독자 50만 돌파</b><span>파이낸셜뉴스 등 언론 보도</span><i class="more">기사 보기<svg class="ic" aria-hidden="true"><use href="#i-out"/></svg></i></a>
       </div>
     </div>
     <div class="related"><a href="#lec-03"><b>관련 강의 03</b>뉴미디어 콘텐츠 제작 및 유튜브 등 콘텐츠 기획</a></div>
@@ -1244,12 +1251,12 @@ h1[tabindex="-1"]:focus{outline:none}
           </div>
         </aside>
       </div>
-      <p class="note">조회수·구독자: YouTube 공개 데이터, 2026.10.23 기준</p>
+      <p class="note">조회수·구독자: YouTube 공개 데이터, 2026.10.23 기준 · 썸네일을 누르면 해당 영상으로 이동합니다</p>
     </div>
     <div class="block">
       <div class="block-title"><h2>《이홍연의 미디어LAB》</h2><a class="link" href="https://www.youtube.com/@leemedialab" target="_blank" rel="noopener">채널 보기 →</a></div>
       <article class="card case rv">
-        <figure class="media case__media" style="aspect-ratio:16/9"><img src="assets/img/home-medialab.webp" alt="《이홍연의 미디어LAB》 4K 촬영 세트에 선 이홍연" width="1400" height="787" loading="lazy"></figure>
+        <a class="media case__media golink" style="aspect-ratio:16/9" href="https://www.youtube.com/@leemedialab" target="_blank" rel="noopener" aria-label="《이홍연의 미디어LAB》 유튜브 채널 새 창으로 보기"><img src="assets/img/home-medialab.webp" alt="《이홍연의 미디어LAB》 4K 촬영 세트에 선 이홍연" width="1400" height="787" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>채널 보기</span></a>
         <div class="case__body">
           <span class="case__tag">NOW <span>@leemedialab · 2026.05 –</span></span>
           <h3>미디어·플랫폼 이슈를<br>AI로 만드는 1인 채널</h3>
@@ -1268,10 +1275,10 @@ h1[tabindex="-1"]:focus{outline:none}
     <div class="block">
       <div class="block-title"><h2>방송·크리에이터 협업</h2><p>EBS 펭수 · MBC 〈마이 리틀 텔레비전〉 · MBN · tvN · 아프리카TV 도아TV</p></div>
       <div class="four">
-        <figure class="rv"><div class="media" style="aspect-ratio:4/3"><img src="assets/img/yd-maritel.webp" alt="MBC 마이리틀텔레비전 촬영 현장에서 크리에이터 도티와 손을 흔드는 이홍연" width="1400" height="944" loading="lazy"></div><figcaption class="cap">MBC 〈마이 리틀 텔레비전〉 촬영 현장 · 2019</figcaption></figure>
-        <figure class="rv"><div class="media" style="aspect-ratio:4/3"><img src="assets/img/yd-doa.webp" alt="아프리카TV 도아TV 합동 방송 화면" width="1299" height="683" loading="lazy"></div><figcaption class="cap">아프리카TV 도아TV 합방 · 조회수 40만 회</figcaption></figure>
-        <figure class="rv"><div class="media" style="aspect-ratio:4/3"><img src="assets/img/yd-2020home.webp" alt="2020년 7월 요들랜드TV 채널 홈 화면 캡처" width="1600" height="900" loading="lazy"></div><figcaption class="cap">2020.07 채널 홈 · 영상 15편, 구독자 1.13만</figcaption></figure>
-        <figure class="rv"><div class="media" style="aspect-ratio:4/3"><img src="assets/img/yd-solo.webp" alt="요들 모자를 쓰고 스튜디오 마이크 앞에서 노래하는 이홍연" width="1080" height="810" loading="lazy"></div><figcaption class="cap">시즌 2 · 쇼츠 촬영 현장 · 2026</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=fOAehDdIusk" target="_blank" rel="noopener" aria-label="마리텔 촬영장 비하인드 영상 새 창으로 보기"><img src="assets/img/yd-maritel.webp" alt="MBC 마이리틀텔레비전 촬영 현장에서 크리에이터 도티와 손을 흔드는 이홍연" width="1400" height="944" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">MBC 〈마이 리틀 텔레비전〉 촬영장 비하인드 · 2019</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=pgG7t-5jhFk" target="_blank" rel="noopener" aria-label="도아TV 합방 영상 새 창으로 보기"><img src="assets/img/yd-doa.webp" alt="아프리카TV 도아TV 합동 방송 화면" width="1299" height="683" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">아프리카TV 도아TV 합방 · 조회수 49만 회</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/@yodelland/videos" target="_blank" rel="noopener" aria-label="요들랜드TV 채널 새 창으로 보기"><img src="assets/img/yd-2020home.webp" alt="2020년 7월 요들랜드TV 채널 홈 화면 캡처" width="1600" height="900" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>채널 보기</span></a><figcaption class="cap">2020.07 채널 홈 · 영상 15편, 구독자 1.13만</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/shorts/KjnLErayI4I" target="_blank" rel="noopener" aria-label="요들랜드 시즌 2 쇼츠 새 창으로 보기"><img src="assets/img/yd-solo.webp" alt="요들 모자를 쓰고 스튜디오 마이크 앞에서 노래하는 이홍연" width="1080" height="810" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>쇼츠 보기</span></a><figcaption class="cap">시즌 2 쇼츠 「열심히 성장하는 요린이입니다」 · 2026</figcaption></figure>
       </div>
     </div>
     <div class="related"><a href="#lec-03"><b>관련 강의 03</b>뉴미디어 콘텐츠 제작 및 유튜브 등 콘텐츠 기획</a><a href="#lec-04"><b>관련 강의 04</b>숏폼 콘텐츠 제작 및 바이럴 전략</a></div>
@@ -1298,7 +1305,7 @@ h1[tabindex="-1"]:focus{outline:none}
     <div class="block">
       <div class="block-title"><h2>대표 사례</h2><p>모든 수치는 사내 보고서·캡처 기준</p></div>
       <article class="card case rv">
-        <figure class="media case__media case__media--phone"><img src="assets/img/mkt-tiktok.webp" alt="틱톡 '브로비와 선배들' 계정 피드: 조회수 110만 회 등의 영상 목록" width="600" height="1333" loading="lazy"></figure>
+        <a class="media case__media case__media--phone golink" href="https://www.tiktok.com/@lovelybtv" target="_blank" rel="noopener" aria-label="틱톡 '브로비와 선배들' 계정 새 창으로 보기"><img src="assets/img/mkt-tiktok.webp" alt="틱톡 '브로비와 선배들' 계정 피드: 조회수 110만 회 등의 영상 목록" width="600" height="1333" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>틱톡 보기</span></a>
         <div class="case__body">
           <span class="case__tag">CASE 01 <span>TikTok · 2021</span></span>
           <h3>파일럿 1,300회에서 1,960만 회로.<br>Z세대가 '놀이'로 보는 기업 채널</h3>
@@ -1308,7 +1315,7 @@ h1[tabindex="-1"]:focus{outline:none}
         </div>
       </article>
       <article class="card case rv">
-        <figure class="media case__media case__media--phone"><img src="assets/img/mkt-playz2.webp" alt="네이버 쇼핑라이브에서 PLAY Z 기기를 시연하는 이홍연" width="606" height="1080" loading="lazy"><img src="assets/img/mkt-playz.webp" alt="PLAY Z 라이브커머스 방송 화면" width="700" height="999" loading="lazy"></figure>
+        <a class="media case__media case__media--phone golink" href="https://view.shoppinglive.naver.com/replays/613373" target="_blank" rel="noopener" aria-label="네이버 쇼핑라이브 PLAY Z 1회차 다시보기 새 창으로 보기"><img src="assets/img/mkt-playz2.webp" alt="네이버 쇼핑라이브에서 PLAY Z 기기를 시연하는 이홍연" width="606" height="1080" loading="lazy"><img src="assets/img/mkt-playz.webp" alt="PLAY Z 라이브커머스 방송 화면" width="700" height="999" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>다시보기</span></a>
         <div class="case__body">
           <span class="case__tag">CASE 02 <span>Live Commerce · 2022.08–09</span></span>
           <h3>본사 직원이 직접 진행한<br>PLAY Z 라이브커머스</h3>
@@ -1331,7 +1338,7 @@ h1[tabindex="-1"]:focus{outline:none}
         <div class="case__body">
           <span class="case__tag">CASE 04 <span>Employeencer</span></span>
           <h3>영업사원에서 '1인 제작사'로,<br>브랜드의 얼굴이 되다</h3>
-          <p>사내 웹진 B log Vol.63 커버스토리 「홍연의 상상은 현실이 된다」에 소개됐습니다. B tv pop 런칭 블로그 출연, AI 셋톱박스 'AI4 Vision' 소개 영상 진행 등 상품 홍보의 간판 역할도 맡았습니다.</p>
+          <p>사내 웹진 B log Vol.63 커버스토리 「홍연의 상상은 현실이 된다」에 소개됐습니다. <a class="link" href="https://blog.skbroadband.com/entry/B-tv-pop-%EC%84%B1%EB%8A%A5%EC%9D%80-IPTV-%EA%B0%99%EC%9D%B4-%EC%9A%94%EA%B8%88%EC%9D%80-%EB%8D%94-%EC%A0%80%EB%A0%B4%ED%95%98%EA%B2%8C-%EB%94%B0%EB%81%88%EB%94%B0%EB%81%88%ED%95%9C-%EA%B0%93%EC%84%B1%EB%B9%84-TV%EC%9D%98-%ED%83%84%EC%83%9D" target="_blank" rel="noopener">B tv pop 런칭 블로그 출연 ↗</a>, AI 셋톱박스 'AI4 Vision' 소개 영상 진행 등 상품 홍보의 간판 역할도 맡았습니다.</p>
         </div>
       </article>
     </div>
@@ -1378,7 +1385,7 @@ h1[tabindex="-1"]:focus{outline:none}
     <div class="block">
       <div class="two">
         <figure class="rv"><div class="media" style="aspect-ratio:16/10;background:#fff;border:1px solid var(--line);padding:clamp(10px,1.4vw,18px)"><img style="object-fit:contain" src="assets/img/ict-ipcc.webp" alt="고객사에 제안한 IPCC 콜센터 인프라 목표 구성도" width="1268" height="792" loading="lazy"></div><figcaption class="cap">제안한 IPCC 콜인프라 목표 구성도 (고객 정보 가림)</figcaption></figure>
-        <figure class="rv"><div class="media" style="aspect-ratio:16/10"><img src="assets/img/ict-careers.webp" alt="SK Careers Journal에 소개된 AM 이홍연" width="1383" height="774" loading="lazy"></div><figcaption class="cap">SK Careers Journal 「생생한 직무 경험 이야기」 · 2020.01.24</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:16/10" href="https://www.skcareersjournal.com/1664" target="_blank" rel="noopener" aria-label="SK Careers Journal 기사 「[작전명] SKB B2B」 새 창으로 보기"><img src="assets/img/ict-careers.webp" alt="SK Careers Journal에 소개된 AM 이홍연" width="1383" height="774" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>기사 보기</span></a><figcaption class="cap">SK Careers Journal 「[작전명] SKB B2B」 현직자 인터뷰 · 2020.01.24</figcaption></figure>
       </div>
     </div>
     <div class="related"><a href="#lec-07"><b>관련 강의 07</b>ICT·네트워크 인프라와 미디어 유통 구조의 이해</a></div>
