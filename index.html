@@ -597,7 +597,6 @@ h1[tabindex="-1"]:focus{outline:none}
 
 /* 03 then and now */
 .cv-then{margin-top:16px}
-.cv-then figure:last-child .media img{object-position:50% 2%}
 
 /* 04 A TO Z: a fixed light "studio set" (it reads as a photo in both themes), studio notes beside it */
 .cv-atoz{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(24px,3.6vw,56px);align-items:center}
@@ -646,10 +645,9 @@ h1[tabindex="-1"]:focus{outline:none}
 .cv-mv__txt small{font-size:13px;color:var(--ink-3);line-height:1.5}
 
 /* 05 ON AIR */
-.cv-onair{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
-.cv-onair__txt{display:grid;gap:16px;align-content:start;color:var(--ink-2);font-size:15.5px;line-height:1.7}
-@media (min-width:1101px){.cv-onair__txt{align-self:stretch;margin-bottom:33px}} /* card ends where the photos end, captions hang below */
-.cv-onair__q{padding-top:16px;border-top:1px solid var(--line);font-size:18px;font-weight:800;letter-spacing:-.03em;line-height:1.5;color:var(--ink)}
+.cv-onair{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.cv-onair__txt{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:16px clamp(28px,4vw,56px);align-items:center;color:var(--ink-2);font-size:15.5px;line-height:1.7}
+.cv-onair__q{padding-left:clamp(20px,3vw,40px);border-left:1px solid var(--line);font-size:18px;font-weight:800;letter-spacing:-.03em;line-height:1.5;color:var(--ink)}
 
 /* 06 관심사원 · B봇 */
 .cv-gw{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:16px;align-items:start}
@@ -702,8 +700,8 @@ h1[tabindex="-1"]:focus{outline:none}
 .cv-dream__cut{width:100%;height:auto;align-self:end;margin-top:clamp(36px,5vw,76px)}
 
 @media (max-width:1100px){
-  .cv-onair{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cv-onair__txt{grid-column:1/-1}
+  .cv-onair__txt{grid-template-columns:minmax(0,1fr)}
+  .cv-onair__q{padding:16px 0 0;border-left:0;border-top:1px solid var(--line)}
   .cv-anat{grid-template-columns:minmax(0,1fr) clamp(200px,30%,280px) minmax(0,1fr)}
 }
 /* below 1180 the glass card would reach the crew, so it drops under the photo */
@@ -1775,7 +1773,7 @@ h1[tabindex="-1"]:focus{outline:none}
       <p class="note">조회수·구독자: YouTube 공개 데이터, 2026.10.23 기준 · 썸네일을 누르면 해당 영상으로 이동합니다</p>
       <div class="two cv-then">
         <figure class="rv"><a class="media golink" style="aspect-ratio:16/9" href="https://www.youtube.com/@yodelland/videos" target="_blank" rel="noopener" aria-label="요들랜드TV 채널 새 창으로 보기"><img src="assets/img/yd-2020home.webp" alt="2020년 7월 요들랜드TV 채널 홈 화면 캡처" width="1600" height="900" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>채널 보기</span></a><figcaption class="cap">2020.07 채널 홈 · 영상 15편, 구독자 1.13만</figcaption></figure>
-        <figure class="rv"><a class="media golink" style="aspect-ratio:16/9" href="https://www.youtube.com/shorts/KjnLErayI4I" target="_blank" rel="noopener" aria-label="요들랜드 시즌 2 쇼츠 새 창으로 보기"><img src="assets/img/yd-solo.webp" alt="요들 모자를 쓰고 스튜디오 마이크 앞에서 노래하는 이홍연" width="1080" height="810" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>쇼츠 보기</span></a><figcaption class="cap">시즌 2 쇼츠 「열심히 성장하는 요린이입니다」 · 2026</figcaption></figure>
+        <figure class="rv"><a class="media golink" style="aspect-ratio:16/9" href="https://www.youtube.com/watch?v=ZoueHLYOPug" target="_blank" rel="noopener" aria-label="요들랜드 시즌 2 1화 영상 새 창으로 보기"><img src="assets/img/yd-s2ep1.webp" alt="요들랜드 TV 시즌 2 1화 썸네일: 요들 모자를 쓴 요PD 이홍연과 요들언니, 6년만에 재결합 댓글 읽기" width="1280" height="720" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">시즌 2 1화 「6년만의 복귀」 댓글 Q&amp;A · 2026</figcaption></figure>
       </div>
     </div>
 
@@ -1835,6 +1833,7 @@ h1[tabindex="-1"]:focus{outline:none}
           <p>펭수 초창기 홍대 공연을 함께한 인연으로 요들랜드 팀이 MBC 〈마이 리틀 텔레비전〉에 나갔고, 저는 촬영장 비하인드를 직접 찍었습니다. 개그맨과의 콜라보 방송, 아프리카TV 도아TV 합방도 이어졌습니다.</p>
           <p class="cv-onair__q">섭외 연락은 PD인 제가 받았지만, 무대의 주인공은 뛰어난 선생님들이었습니다.</p>
         </div>
+        <figure class="rv"><div class="media" style="aspect-ratio:4/3"><img src="assets/img/yd-hongdae.webp" alt="홍대 거리 공연을 마치고 펭수, 요들 선생님들, 전통의상을 입은 어린이 단원들과 함께 선 이홍연. 어린이 얼굴은 흐리게 처리" width="960" height="720" loading="lazy"></div><figcaption class="cap">EBS 펭수와 홍대 공연 · 2019</figcaption></figure>
         <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=fOAehDdIusk" target="_blank" rel="noopener" aria-label="마리텔 촬영장 비하인드 영상 새 창으로 보기"><img src="assets/img/yd-maritel.webp" alt="MBC 마이리틀텔레비전 촬영 현장에서 크리에이터 도티와 손을 흔드는 이홍연" width="1400" height="944" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">MBC 〈마이 리틀 텔레비전〉 촬영장 비하인드 · 2019</figcaption></figure>
         <figure class="rv"><a class="media golink" style="aspect-ratio:4/3" href="https://www.youtube.com/watch?v=pgG7t-5jhFk" target="_blank" rel="noopener" aria-label="도아TV 합방 영상 새 창으로 보기"><img src="assets/img/yd-doa.webp" alt="아프리카TV 도아TV 합동 방송 화면" width="1299" height="683" loading="lazy"><span class="go"><svg class="ic" aria-hidden="true"><use href="#i-out"/></svg>영상 보기</span></a><figcaption class="cap">아프리카TV 도아TV 합방 · 조회수 49만 회</figcaption></figure>
       </div>
@@ -1985,14 +1984,6 @@ h1[tabindex="-1"]:focus{outline:none}
           <p>B tv 콘텐츠의 중간광고를 직접 기획·제작하고 출연해 상품과 서비스를 알렸습니다. 출연자가 자연스럽게 등장해 거부감 없이 메시지를 전했고, 일반 TV 광고보다 훨씬 빨리 만들어 시의성 있게 노출했습니다.</p>
           <div class="kpis"><div><b>5,417<small>만</small></b><span>누적 조회수</span></div><div><b>46.5<small>원</small></b><span>조회당 비용 (2022)</span></div><div><b>54<small>억</small></b><span>매체 효과 추정</span></div></div>
           <p class="note">산식: 누적 조회수 5,417만(2020.08–2023.05) × CPV 50원 × 콘텐츠당 광고 2개. 2022년 조회당 비용은 일반 광고보다 31% 낮았습니다.</p>
-        </div>
-      </article>
-      <article class="card case rv">
-        <figure class="media case__media"><img src="assets/img/cv/webzine-cover.webp" alt="사내 웹진 B log Vol.63 Story+ 첫 화면: 홍연의 상상은 현실이 된다" width="1614" height="862" loading="lazy"></figure>
-        <div class="case__body">
-          <span class="case__tag">CASE 04 <span>Employeencer</span></span>
-          <h3>영업사원에서 '1인 제작사'로,<br>브랜드의 얼굴이 되다</h3>
-          <p>사내 웹진 B log Vol.63 커버스토리 「홍연의 상상은 현실이 된다」에 소개됐습니다. <a class="link" href="https://blog.skbroadband.com/entry/B-tv-pop-%EC%84%B1%EB%8A%A5%EC%9D%80-IPTV-%EA%B0%99%EC%9D%B4-%EC%9A%94%EA%B8%88%EC%9D%80-%EB%8D%94-%EC%A0%80%EB%A0%B4%ED%95%98%EA%B2%8C-%EB%94%B0%EB%81%88%EB%94%B0%EB%81%88%ED%95%9C-%EA%B0%93%EC%84%B1%EB%B9%84-TV%EC%9D%98-%ED%83%84%EC%83%9D" target="_blank" rel="noopener">B tv pop 런칭 블로그 출연 ↗</a>, AI 셋톱박스 'AI4 Vision' 소개 영상 진행 등 상품 홍보의 간판 역할도 맡았습니다.</p>
         </div>
       </article>
     </div>
