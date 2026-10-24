@@ -184,8 +184,6 @@ h1[tabindex="-1"]:focus{outline:none}
 .menu__list a[aria-current="page"]{color:var(--bg);background:var(--ink)}
 .menu__list .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .menu__sep{flex:none;align-self:center;width:1px;height:16px;margin:0 5px;background:var(--line-2)}
-/* the bar already carries a 강의 문의 button; the menu repeats it only where that button is hidden */
-@media (min-width:521px){.menu__contact{display:none}}
 .bar__act{display:flex;align-items:center;gap:8px;flex:none}
 .theme-btn{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:transparent;color:var(--ink);cursor:pointer;transition:transform .5s var(--ease)}
 .theme-btn:hover{transform:rotate(180deg)}
@@ -195,10 +193,41 @@ h1[tabindex="-1"]:focus{outline:none}
   .bar__in{flex-wrap:wrap;height:auto;padding-top:12px;gap:10px 16px}
   .logo{margin-right:auto}
   .menu{order:3;flex-basis:100%;justify-content:flex-start;margin:0 calc(var(--gut-r) * -1) 0 -4px}
-  .menu__scroll{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-bottom:8px}
+  .menu__scroll{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent);padding-bottom:8px}
   .menu__list::after{content:"";flex:0 0 max(var(--gut-r),15vw)}
 }
-@media (max-width:520px){.bar__act .btn{display:none}.logo__name small{display:none}}
+/* two-row bar: the first row has room, so the role sits beside the name (one line on tablets, two on phones) */
+.logo__role{display:none}
+@media (max-width:1360px){
+  .logo__role{display:block;margin-left:3px;padding-left:14px;border-left:1px solid var(--line-2);font-size:13px;font-weight:600;line-height:1.35;letter-spacing:-.02em;color:var(--ink-2);white-space:nowrap}
+  .logo__role i{font-style:normal;margin:0 .4em;color:var(--ink-3)}
+  .logo__br{display:none}
+}
+@media (max-width:760px){
+  .logo__role{font-size:12px;line-height:1.3}
+  .logo__role i{display:none}
+  .logo__br{display:inline}
+}
+/* phones: logo, role and the 강의 문의 button share the first row; the theme switch moves into the 전체 sheet */
+.menu__theme{display:none}
+@media (max-width:520px){
+  .logo__name small{display:none}
+  .logo{gap:10px}
+  .logo__role{margin-left:1px;padding-left:10px;font-size:11px}
+  .bar .theme-btn{display:none}
+  .bar__act .btn--sm{height:40px;padding:0 14px;font-size:13.5px}
+  .menu__sheet .menu__theme{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;margin-top:10px;border:1px solid var(--line-2);border-radius:12px;background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+  .menu__theme svg{width:16px;height:16px}
+}
+.bar__act .btn[aria-current="page"]{background:var(--accent-fill);color:#fff}
+/* the narrowest phones (Fold cover screen 344px, 320px): tighter spacing keeps logo, role and button on one row */
+@media (max-width:359px){
+  header.bar .bar__in{column-gap:8px}  /* outranks the phone tab-bar rule that comes later */
+  .logo{gap:8px}
+  .logo__mark{width:32px;height:32px}
+  .logo__role{padding-left:8px;font-size:10.5px}
+  .bar__act .btn--sm{padding:0 11px;font-size:13px}
+}
 /* phones: the second row reads as a tab bar (underlined current tab, a hairline above) with a fixed 전체 button
    that opens every menu item at once; tablets and desktop keep the pill menu */
 .menu__all,.menu__sheet{display:none}
@@ -206,13 +235,14 @@ h1[tabindex="-1"]:focus{outline:none}
   .bar .bar__in{padding-top:10px;gap:4px 16px}
   .bar .menu{position:static;margin:0 calc(var(--gut-r) * -1) 0 calc(var(--gut) * -1);border-top:1px solid var(--line)}
   .bar .menu__scroll{flex:1;min-width:0;padding-bottom:0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}
-  .bar .menu__list{gap:0;padding:0 0 0 calc(var(--gut) - 10px)}
+  .bar{border-bottom-color:var(--line)}
+  .bar .menu__list{gap:0;padding:0 0 0 calc(var(--gut) - 12px)}
   .bar .menu__list::after{flex-basis:20px}
   .bar .menu__sep{display:none}
-  .bar .menu__list a{height:46px;padding:0 10px;border-radius:0;font-size:15px;color:var(--ink-3)}
+  .bar .menu__list a{height:46px;padding:0 12px;border-radius:0;font-size:15px;color:var(--ink-3)}
   .bar .menu__list a:hover{background:none;color:var(--ink)}
   .bar .menu__list a[aria-current="page"]{color:var(--ink);background:none;font-weight:700}
-  .bar .menu__list a[aria-current="page"]::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2.5px;border-radius:2px 2px 0 0;background:var(--accent)}
+  .bar .menu__list a[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2.5px;border-radius:2px 2px 0 0;background:var(--accent)}
   .menu__all{display:flex;align-items:center;gap:3px;flex:none;height:46px;padding:0 calc(var(--gut-r) - 2px) 0 14px;border:0;border-left:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
   .menu__all svg{width:16px;height:16px;transition:transform .3s var(--ease)}
   .menu__all[aria-expanded="true"] svg{transform:rotate(180deg)}
@@ -221,6 +251,7 @@ h1[tabindex="-1"]:focus{outline:none}
   .menu__sheet ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
   .menu__sheet a{display:flex;align-items:center;height:50px;padding:0 14px;border-radius:12px;background:var(--bg-2);text-decoration:none;font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
   .menu__sheet a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+  .menu__sheet li:last-child:nth-child(odd){grid-column:1/-1}
 }
 
 /* ---------- views ---------- */
@@ -1279,9 +1310,10 @@ h1[tabindex="-1"]:focus{outline:none}
 
 <header class="bar" id="bar">
   <div class="wrap bar__in">
-    <a class="logo" href="#home" aria-label="이홍연 홈">
+    <a class="logo" href="#home" aria-label="이홍연, AI-Native 콘텐츠 디렉터·미디어/플랫폼산업 연구자 (홈)">
       <img class="logo__mark" src="assets/img/avatar.webp" alt="" width="38" height="38">
       <span class="logo__name"><b>이홍연</b><small>HONGYEON LEE</small></span>
+      <span class="logo__role">AI-Native 콘텐츠 디렉터<i aria-hidden="true">·</i><br class="logo__br">미디어/플랫폼산업 연구자</span>
     </a>
     <nav class="menu" aria-label="메뉴">
       <div class="menu__scroll" id="menuScroll">
@@ -1296,7 +1328,6 @@ h1[tabindex="-1"]:focus{outline:none}
           <li><a href="#yonsei">연세대 정보대학원</a></li>
           <li class="menu__sep" aria-hidden="true"></li>
           <li><a href="#lectures">강의 콘텐츠<span class="dot" aria-hidden="true"></span></a></li>
-          <li class="menu__contact"><a href="#contact">강의 문의</a></li>
         </ul>
       </div>
       <button class="menu__all" id="menuAll" type="button" aria-expanded="false" aria-controls="menuSheet">전체<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.5 8l4.5 4.5L14.5 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -1318,6 +1349,7 @@ h1[tabindex="-1"]:focus{outline:none}
       <li><a href="#lectures">강의 콘텐츠</a></li>
       <li><a href="#contact">강의 문의</a></li>
     </ul>
+    <button class="menu__theme" id="themeBtn2" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>밝은 화면 · 어두운 화면 전환</button>
   </div>
 </header>
 
@@ -2592,11 +2624,13 @@ h1[tabindex="-1"]:focus{outline:none}
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // theme toggle
-  document.getElementById('themeBtn').addEventListener('click',function(){
+  function toggleTheme(){
     var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
     var next=cur==='dark'?'light':'dark';root.setAttribute('data-theme',next);
     try{localStorage.setItem('lhy-theme',next)}catch(e){}
-  });
+  }
+  document.getElementById('themeBtn').addEventListener('click',toggleTheme);
+  document.getElementById('themeBtn2').addEventListener('click',toggleTheme);
 
   // glass bar border once the page scrolls
   // on narrow screens the two-row bar slides away while reading down and returns on the way up
@@ -2609,13 +2643,13 @@ h1[tabindex="-1"]:focus{outline:none}
 
   // one view per menu item; the hash names the view (or an anchor inside one)
   var views=[].slice.call(document.querySelectorAll('.view'));
-  var tabs=[].slice.call(document.querySelectorAll('#menuList a, #menuSheet a'));
+  var tabs=[].slice.call(document.querySelectorAll('#menuList a, #menuSheet a, .bar__act a'));
   // phones: the 전체 button opens every menu item at once; picking one, tapping outside or Esc closes it
   var allBtn=document.getElementById('menuAll'),sheet=document.getElementById('menuSheet');
   function setSheet(open){sheet.hidden=!open;allBtn.setAttribute('aria-expanded',open?'true':'false')}
   allBtn.addEventListener('click',function(){setSheet(sheet.hidden)});
   sheet.addEventListener('click',function(e){if(e.target.closest('a'))setSheet(false)});
-  document.addEventListener('click',function(e){if(!sheet.hidden&&!bar.contains(e.target))setSheet(false)});
+  document.addEventListener('click',function(e){if(!sheet.hidden&&!bar.contains(e.target)){e.preventDefault();e.stopPropagation();setSheet(false)}},true);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!sheet.hidden){setSheet(false);allBtn.focus()}});
   var order=views.map(function(v){return v.id});
 
@@ -2654,7 +2688,7 @@ h1[tabindex="-1"]:focus{outline:none}
     var cur=document.querySelector('#menuList a[aria-current]');
     if(!cur||menuScroll.scrollWidth<=menuScroll.clientWidth)return;
     var r=cur.getBoundingClientRect(),sr=menuScroll.getBoundingClientRect();
-    if(r.left<sr.left+8||r.right>sr.right-sr.width*.15)menuScroll.scrollLeft+=(r.left-sr.left)-(sr.width-r.width)/2;
+    if(r.left<sr.left+8||r.right>sr.right-48)menuScroll.scrollLeft+=(r.left-sr.left)-(sr.width-r.width)/2;
   }
 
   var baseTitle=document.title,firstShow=true;
@@ -2664,6 +2698,7 @@ h1[tabindex="-1"]:focus{outline:none}
     views.forEach(function(v){v.classList.toggle('is-on',v===view)});
     tabs.forEach(function(a){if(a.getAttribute('href')==='#'+id){a.setAttribute('aria-current','page')}else{a.removeAttribute('aria-current')}});
     centerMenu();
+    setSheet(false);
     document.title=id==='home'?baseTitle:view.dataset.label+' | '+baseTitle;
     // the subscriber chart scrolls sideways on phones; open it on the latest figures
     var cs=view.querySelector('.chart__scroll');if(cs)cs.scrollLeft=cs.scrollWidth;
