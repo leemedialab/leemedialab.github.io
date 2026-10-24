@@ -335,6 +335,22 @@ h1[tabindex="-1"]:focus{outline:none}
 .spark path.l{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .spark path.a{fill:url(#sparkFill)}
 .spark circle{fill:var(--accent)}
+/* home Numbers: one compact strip of six figures instead of a tall two-row bento */
+.sec--nums{padding-block:clamp(40px,4.5vw,64px)}
+.sec--nums .head + *{margin-top:clamp(22px,2.6vw,34px)}
+.sec--nums .bento{grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.sec--nums .stat{min-height:0;gap:12px;padding:18px 18px 16px;border-radius:18px;overflow:hidden}
+.sec--nums .stat > *{position:relative}
+.sec--nums .stat--wide{grid-column:auto}
+.sec--nums .stat__ic{display:none}
+.sec--nums .stat__top{min-height:2.7em}
+.sec--nums .stat__k{font-size:13px;line-height:1.35}
+.sec--nums .stat__num,.sec--nums .stat--wide .stat__num{font-size:clamp(28px,2.5vw,38px)}
+.sec--nums .stat__num small{font-size:.5em}
+.sec--nums .stat__sub{margin-top:6px;font-size:12px;line-height:1.45}
+.sec--nums .stat > .spark{position:absolute;left:auto;right:0;bottom:0;width:52%;height:58%;margin:0;opacity:.6;pointer-events:none}
+@media (max-width:1100px){.sec--nums .bento{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:600px){.sec--nums .stat > .spark{width:40%;height:42%}.sec--nums .bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.sec--nums .stat{padding:16px 15px 14px}.sec--nums .stat__num,.sec--nums .stat--wide .stat__num{font-size:clamp(26px,8vw,32px)}}
 
 /* speaker */
 .speaker{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,4vw,56px);align-items:start}
@@ -1116,7 +1132,7 @@ h1[tabindex="-1"]:focus{outline:none}
   .feats > :last-child,.info3 > :last-child{grid-column:auto}
   .bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .stat{min-height:170px;gap:18px}
-  .stat--wide,  .stat__ic{display:none}
+  .stat__ic{display:none}
   .float{padding:9px 12px 9px 9px;gap:9px}
   .float__ic{width:34px;height:34px}
   .float b{font-size:16px}
@@ -1240,7 +1256,7 @@ h1[tabindex="-1"]:focus{outline:none}
   </div>
 
 
-  <section class="sec" aria-labelledby="num-title">
+  <section class="sec sec--nums" aria-labelledby="num-title">
     <div class="wrap">
       <div class="head">
         <span class="eyebrow">Numbers</span>
@@ -1255,7 +1271,7 @@ h1[tabindex="-1"]:focus{outline:none}
             <path class="l" d="M4 81 L52 74 L117 67 L166 63 L322 41 L398 18"/>
             <circle cx="398" cy="18" r="5"/>
           </svg>
-          <div><div class="stat__num"><span data-count="55">55</span><small>만</small></div><p class="stat__sub">《B tv 이동진의 파이아키아》 · 2020–2024 · 광고비·구독 이벤트 없이</p></div>
+          <div><div class="stat__num"><span data-count="55">55</span><small>만</small></div><p class="stat__sub">파이아키아 · 광고비 0원</p></div>
         </div>
         <div class="card stat rv">
           <div class="stat__top"><span class="stat__k">누적 조회수</span><span class="stat__ic"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg></span></div>
@@ -1274,8 +1290,8 @@ h1[tabindex="-1"]:focus{outline:none}
           <div><div class="stat__num"><span data-count="1960" data-sep="1">1,960</span><small>만</small></div><p class="stat__sub">누적 조회수 · <span class="nw">58편 · 2021</span></p></div>
         </div>
         <a class="card stat stat--wide stat--link rv" href="#yodel">
-          <div class="stat__top"><span class="stat__k">기획 PD로 키운 《요들랜드 TV》 누적 조회수</span><span class="stat__ic"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
-          <div><div class="stat__num"><span data-count="264">264</span><small>만</small></div><p class="stat__sub">생소한 니치 장르로 최고 63만 회 · 2019–2026</p></div>
+          <div class="stat__top"><span class="stat__k">《요들랜드 TV》 누적 조회수</span><span class="stat__ic"><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+          <div><div class="stat__num"><span data-count="264">264</span><small>만</small></div><p class="stat__sub">최고 63만 회 · 2019–2026</p></div>
         </a>
       </div>
     </div>
