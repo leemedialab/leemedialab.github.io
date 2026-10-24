@@ -477,8 +477,8 @@ h1[tabindex="-1"]:focus{outline:none}
 .meta .chip{background:var(--card);border:1px solid var(--line)}
 .is-dark .meta .chip{background:var(--bg-2)}
 .crumb{display:flex;align-items:center;gap:10px}
-.crumb b{display:grid;place-items:center;height:30px;padding:0 12px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:800;letter-spacing:.02em}
-.crumb span{font-size:15px;font-weight:700;color:var(--ink-2)}
+.crumb b{flex:none;white-space:nowrap;display:grid;place-items:center;height:30px;padding:0 12px;border-radius:999px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:800;letter-spacing:.02em}
+.crumb span{min-width:0;font-size:15px;font-weight:700;line-height:1.4;color:var(--ink-2)}
 .block + .block{margin-top:clamp(56px,7vw,96px)}
 .block-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
 .block-title h2{font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-.04em}
