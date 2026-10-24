@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>이홍연 강사 프로필</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="AI-Native 콘텐츠 디렉터 이홍연의 기업 강의 프로필. AI-Native 제작자, 콘텐츠 디렉터/MC, 개척형 크리에이터, 디지털 마케팅, ICT 컨설턴트, 연세대 정보대학원, 강의 콘텐츠.">
+<meta name="description" content="AI-Native 콘텐츠 디렉터/MC 이홍연의 기업 강의 프로필. AI-Native 제작자, 콘텐츠 디렉터/MC, 개척형 크리에이터, 디지털 마케팅, ICT 컨설턴트, 연세대 정보대학원, 강의 콘텐츠.">
 <link rel="canonical" href="https://leemedialab.github.io/">
 <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta name="theme-color" content="#0B0B0F">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leemedialab.github.io/">
-<meta property="og:title" content="이홍연 | AI-Native 콘텐츠 디렉터 · 기업 강사">
+<meta property="og:title" content="이홍연 | AI-Native 콘텐츠 디렉터/MC · 기업 강사">
 <meta property="og:description" content="AI가 고르는 시대, 선택받는 콘텐츠를 설계합니다. GEO·AI 검색, AI Native 콘텐츠 제작, 유튜브·숏폼 기획, 미디어·플랫폼 비즈니스 강의.">
 <meta property="og:image" content="https://leemedialab.github.io/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -209,49 +209,44 @@ h1[tabindex="-1"]:focus{outline:none}
   .logo__br{display:inline}
 }
 /* phones: logo, role and the 강의 문의 button share the first row; the theme switch moves into the 전체 sheet */
-.menu__theme{display:none}
+.foot__theme{display:none}
 @media (max-width:520px){
   .logo__name small{display:none}
   .logo{gap:10px}
   .logo__role{margin-left:1px;padding-left:10px;font-size:11px}
   .bar .theme-btn{display:none}
   .bar__act .btn--sm{height:40px;padding:0 14px;font-size:13.5px}
-  .menu__sheet .menu__theme{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;margin-top:10px;border:1px solid var(--line-2);border-radius:12px;background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
-  .menu__theme svg{width:16px;height:16px}
+  .foot__theme{display:inline-flex;justify-self:start;align-items:center;gap:8px;height:42px;padding:0 16px;border:1px solid var(--line-2);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+  .foot__theme svg{width:16px;height:16px}
 }
 .bar__act .btn[aria-current="page"]{background:var(--accent-fill);color:#fff}
-/* the narrowest phones (Fold cover screen 344px, 320px): tighter spacing keeps logo, role and button on one row */
-@media (max-width:359px){
+/* narrow phones (360px Galaxy, Fold cover 344px, 320px): tighter spacing keeps logo, role and button on one row */
+@media (max-width:369px){
   header.bar .bar__in{column-gap:8px}  /* outranks the phone tab-bar rule that comes later */
   .logo{gap:8px}
   .logo__mark{width:32px;height:32px}
   .logo__role{padding-left:8px;font-size:10.5px}
   .bar__act .btn--sm{padding:0 11px;font-size:13px}
 }
-/* phones: the second row reads as a tab bar (underlined current tab, a hairline above) with a fixed 전체 button
-   that opens every menu item at once; tablets and desktop keep the pill menu */
-.menu__all,.menu__sheet{display:none}
+@media (max-width:339px){
+  .logo__name b{font-size:15.5px}
+  .logo__role{font-size:10px}
+  .bar__act .btn--sm{padding:0 9px;font-size:12.5px}
+}
+/* phones: every menu item at once, as a 4 x 2 grid under the first row (no sideways scrolling);
+   tablets and desktop keep the pill menu */
 @media (max-width:760px){
-  .bar .bar__in{padding-top:10px;gap:4px 16px}
-  .bar .menu{position:static;margin:0 calc(var(--gut-r) * -1) 0 calc(var(--gut) * -1);border-top:1px solid var(--line)}
-  .bar .menu__scroll{flex:1;min-width:0;padding-bottom:0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}
+  html{scroll-padding-top:184px}
   .bar{border-bottom-color:var(--line)}
-  .bar .menu__list{gap:0;padding:0 0 0 calc(var(--gut) - 12px)}
-  .bar .menu__list::after{flex-basis:20px}
-  .bar .menu__sep{display:none}
-  .bar .menu__list a{height:46px;padding:0 12px;border-radius:0;font-size:15px;color:var(--ink-3)}
-  .bar .menu__list a:hover{background:none;color:var(--ink)}
-  .bar .menu__list a[aria-current="page"]{color:var(--ink);background:none;font-weight:700}
-  .bar .menu__list a[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:2.5px;border-radius:2px 2px 0 0;background:var(--accent)}
-  .menu__all{display:flex;align-items:center;gap:3px;flex:none;height:46px;padding:0 calc(var(--gut-r) - 2px) 0 14px;border:0;border-left:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
-  .menu__all svg{width:16px;height:16px;transition:transform .3s var(--ease)}
-  .menu__all[aria-expanded="true"] svg{transform:rotate(180deg)}
-  .menu__sheet{display:block;position:absolute;left:0;right:0;top:100%;padding:12px var(--gut-r) 16px var(--gut);background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 28px 40px -28px rgba(0,0,0,.4)}
-  .menu__sheet[hidden]{display:none}
-  .menu__sheet ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .menu__sheet a{display:flex;align-items:center;height:50px;padding:0 14px;border-radius:12px;background:var(--bg-2);text-decoration:none;font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
-  .menu__sheet a[aria-current="page"]{background:var(--ink);color:var(--bg)}
-  .menu__sheet li:last-child:nth-child(odd){grid-column:1/-1}
+  .bar .bar__in{padding-top:10px;gap:4px 16px}
+  .bar .menu{margin:0 calc(var(--gut-r) * -1) 0 calc(var(--gut) * -1);border-top:1px solid var(--line)}
+  .bar .menu__scroll{overflow:visible;padding-bottom:0;-webkit-mask-image:none;mask-image:none}
+  .bar .menu__list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;min-width:0;padding:8px var(--gut-r) 10px var(--gut)}
+  .bar .menu__list::after,.bar .menu__sep,.bar .menu__list .dot{display:none}
+  .bar .menu__list li{min-width:0}
+  .bar .menu__list a{height:100%;min-height:44px;padding:5px 4px;justify-content:center;border-radius:10px;background:var(--bg-2);text-align:center;white-space:normal;word-break:keep-all;font-size:12.5px;line-height:1.25;letter-spacing:-.03em;color:var(--ink-2)}
+  .bar .menu__list a:hover{background:var(--bg-3);color:var(--ink)}
+  .bar .menu__list a[aria-current="page"]{background:var(--ink);color:var(--bg);font-weight:700}
 }
 
 /* ---------- views ---------- */
@@ -1312,10 +1307,10 @@ h1[tabindex="-1"]:focus{outline:none}
 
 <header class="bar" id="bar">
   <div class="wrap bar__in">
-    <a class="logo" href="#home" aria-label="이홍연, AI-Native 콘텐츠 디렉터·미디어/플랫폼산업 연구자 (홈)">
+    <a class="logo" href="#home" aria-label="이홍연, AI-Native 콘텐츠 디렉터/MC·미디어/플랫폼산업 연구자 (홈)">
       <img class="logo__mark" src="assets/img/avatar.webp" alt="" width="38" height="38">
       <span class="logo__name"><b>이홍연</b><small>HONGYEON LEE</small></span>
-      <span class="logo__role">AI-Native 콘텐츠 디렉터<i aria-hidden="true">·</i><br class="logo__br">미디어/플랫폼산업 연구자</span>
+      <span class="logo__role">AI-Native 콘텐츠 디렉터/MC<i aria-hidden="true">·</i><br class="logo__br">미디어/플랫폼산업 연구자</span>
     </a>
     <nav class="menu" aria-label="메뉴">
       <div class="menu__scroll" id="menuScroll">
@@ -1332,26 +1327,11 @@ h1[tabindex="-1"]:focus{outline:none}
           <li><a href="#lectures">강의 콘텐츠<span class="dot" aria-hidden="true"></span></a></li>
         </ul>
       </div>
-      <button class="menu__all" id="menuAll" type="button" aria-expanded="false" aria-controls="menuSheet">전체<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.5 8l4.5 4.5L14.5 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </nav>
     <div class="bar__act">
       <button class="theme-btn" id="themeBtn" type="button" aria-label="밝은 화면과 어두운 화면 전환"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg></button>
       <a class="btn btn--sm" href="#contact">강의 문의</a>
     </div>
-  </div>
-  <div class="menu__sheet" id="menuSheet" hidden>
-    <ul aria-label="전체 메뉴">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#chainshift">AI-Native 제작자</a></li>
-      <li><a href="#pd">콘텐츠 디렉터/MC</a></li>
-      <li><a href="#yodel">개척형 크리에이터</a></li>
-      <li><a href="#marketing">디지털 마케팅</a></li>
-      <li><a href="#ict">ICT 컨설턴트</a></li>
-      <li><a href="#yonsei">연세대 정보대학원</a></li>
-      <li><a href="#lectures">강의 콘텐츠</a></li>
-      <li><a href="#contact">강의 문의</a></li>
-    </ul>
-    <button class="menu__theme" id="themeBtn2" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>밝은 화면 · 어두운 화면 전환</button>
   </div>
 </header>
 
@@ -1367,7 +1347,7 @@ h1[tabindex="-1"]:focus{outline:none}
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="wrap hero__grid">
       <div>
-        <span class="pill pill--live hero__role">AI-Native 콘텐츠 디렉터 · 미디어/플랫폼산업 연구자</span>
+        <span class="pill pill--live hero__role">AI-Native 콘텐츠 디렉터/MC · 미디어/플랫폼산업 연구자</span>
         <h1 class="h-display" id="hero-title">AI가 고르는 시대,<br><span class="grad">선택받는 콘텐츠</span>를<br>설계합니다</h1>
         <p class="lead">통신·네트워크 인프라(Telco)부터 55만 구독자 규모의 유료방송·유튜브 오리지널 채널 기획과 <strong>메인 MC</strong>, 생성형 AI 검색 최적화(GEO) 및 AI Native 콘텐츠 제작까지 미디어·ICT 생태계 전반을 아우르는 실무형 디렉터입니다.</p>
         <div class="sig"><b>이홍연</b><i></i><span>Hongyeon Lee</span><i></i><span>SK브로드밴드 8년 · 연세대 정보대학원</span></div>
@@ -2597,7 +2577,7 @@ h1[tabindex="-1"]:focus{outline:none}
   <div class="wrap">
     <div>
       <a class="logo" href="#home"><img class="logo__mark" src="assets/img/avatar.webp" alt="" width="38" height="38" loading="lazy"><span class="logo__name"><b>이홍연</b><small>HONGYEON LEE</small></span></a>
-      <p>AI-Native 콘텐츠 디렉터 · 기업 강사. 통신 인프라부터 유튜브 오리지널, 생성형 AI 검색까지 직접 해 본 일을 강의합니다.</p>
+      <p>AI-Native 콘텐츠 디렉터/MC · 기업 강사. 통신 인프라부터 유튜브 오리지널, 생성형 AI 검색까지 직접 해 본 일을 강의합니다.</p>
     </div>
     <nav aria-label="하단 메뉴">
       <a href="#chainshift">AI-Native 제작자</a><a href="#pd">콘텐츠 디렉터/MC</a><a href="#yodel">개척형 크리에이터</a>
@@ -2605,6 +2585,7 @@ h1[tabindex="-1"]:focus{outline:none}
       <a href="#lectures">강의 콘텐츠</a><a href="#contact">강의 문의</a>
     </nav>
     <div class="foot__contact"><a class="foot__mail" href="tel:01073681377">010-7368-1377</a><a class="foot__mail" href="mailto:leemedialab@gmail.com">leemedialab@gmail.com</a><a class="btn btn--sm btn--accent" href="#contact" style="margin-top:6px">강의 문의하기</a></div>
+    <button class="foot__theme" id="themeBtn2" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>밝은 화면 · 어두운 화면 전환</button>
     <div class="foot__copy"><span>© 2026 이홍연 Hongyeon Lee. All rights reserved.</span><span>Seoul, Korea</span></div>
   </div>
 </footer>
@@ -2638,21 +2619,14 @@ h1[tabindex="-1"]:focus{outline:none}
   // on narrow screens the two-row bar slides away while reading down and returns on the way up
   var bar=document.getElementById('bar'),narrow=window.matchMedia('(max-width:1360px)'),lastY=window.scrollY;
   function onScroll(){var y=window.scrollY;bar.classList.toggle('is-scrolled',y>4);
-    bar.classList.toggle('is-hid',narrow.matches&&y>lastY&&y>160&&!bar.contains(document.activeElement)&&document.getElementById('menuSheet').hidden);lastY=y}
+    bar.classList.toggle('is-hid',narrow.matches&&y>lastY&&y>160&&!bar.contains(document.activeElement));lastY=y}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
   function barH(){root.style.setProperty('--barh',bar.offsetHeight+'px')}
   if('ResizeObserver' in window)new ResizeObserver(barH).observe(bar);else window.addEventListener('resize',barH);barH();
 
   // one view per menu item; the hash names the view (or an anchor inside one)
   var views=[].slice.call(document.querySelectorAll('.view'));
-  var tabs=[].slice.call(document.querySelectorAll('#menuList a, #menuSheet a, .bar__act a'));
-  // phones: the 전체 button opens every menu item at once; picking one, tapping outside or Esc closes it
-  var allBtn=document.getElementById('menuAll'),sheet=document.getElementById('menuSheet');
-  function setSheet(open){sheet.hidden=!open;allBtn.setAttribute('aria-expanded',open?'true':'false')}
-  allBtn.addEventListener('click',function(){setSheet(sheet.hidden)});
-  sheet.addEventListener('click',function(e){if(e.target.closest('a'))setSheet(false)});
-  document.addEventListener('click',function(e){if(!sheet.hidden&&!bar.contains(e.target)){e.preventDefault();e.stopPropagation();setSheet(false)}},true);
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!sheet.hidden){setSheet(false);allBtn.focus()}});
+  var tabs=[].slice.call(document.querySelectorAll('#menuList a, .bar__act a'));
   var order=views.map(function(v){return v.id});
 
   // previous / next cards at the foot of each view
@@ -2700,7 +2674,6 @@ h1[tabindex="-1"]:focus{outline:none}
     views.forEach(function(v){v.classList.toggle('is-on',v===view)});
     tabs.forEach(function(a){if(a.getAttribute('href')==='#'+id){a.setAttribute('aria-current','page')}else{a.removeAttribute('aria-current')}});
     centerMenu();
-    setSheet(false);
     document.title=id==='home'?baseTitle:view.dataset.label+' | '+baseTitle;
     // the subscriber chart scrolls sideways on phones; open it on the latest figures
     var cs=view.querySelector('.chart__scroll');if(cs)cs.scrollLeft=cs.scrollWidth;
