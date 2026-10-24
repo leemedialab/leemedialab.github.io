@@ -199,6 +199,29 @@ h1[tabindex="-1"]:focus{outline:none}
   .menu__list::after{content:"";flex:0 0 max(var(--gut-r),15vw)}
 }
 @media (max-width:520px){.bar__act .btn{display:none}.logo__name small{display:none}}
+/* phones: the second row reads as a tab bar (underlined current tab, a hairline above) with a fixed 전체 button
+   that opens every menu item at once; tablets and desktop keep the pill menu */
+.menu__all,.menu__sheet{display:none}
+@media (max-width:760px){
+  .bar .bar__in{padding-top:10px;gap:4px 16px}
+  .bar .menu{position:static;margin:0 calc(var(--gut-r) * -1) 0 calc(var(--gut) * -1);border-top:1px solid var(--line)}
+  .bar .menu__scroll{flex:1;min-width:0;padding-bottom:0;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 32px),transparent)}
+  .bar .menu__list{gap:0;padding:0 0 0 calc(var(--gut) - 10px)}
+  .bar .menu__list::after{flex-basis:20px}
+  .bar .menu__sep{display:none}
+  .bar .menu__list a{height:46px;padding:0 10px;border-radius:0;font-size:15px;color:var(--ink-3)}
+  .bar .menu__list a:hover{background:none;color:var(--ink)}
+  .bar .menu__list a[aria-current="page"]{color:var(--ink);background:none;font-weight:700}
+  .bar .menu__list a[aria-current="page"]::after{content:"";position:absolute;left:10px;right:10px;bottom:0;height:2.5px;border-radius:2px 2px 0 0;background:var(--accent)}
+  .menu__all{display:flex;align-items:center;gap:3px;flex:none;height:46px;padding:0 calc(var(--gut-r) - 2px) 0 14px;border:0;border-left:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+  .menu__all svg{width:16px;height:16px;transition:transform .3s var(--ease)}
+  .menu__all[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .menu__sheet{display:block;position:absolute;left:0;right:0;top:100%;padding:12px var(--gut-r) 16px var(--gut);background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 28px 40px -28px rgba(0,0,0,.4)}
+  .menu__sheet[hidden]{display:none}
+  .menu__sheet ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .menu__sheet a{display:flex;align-items:center;height:50px;padding:0 14px;border-radius:12px;background:var(--bg-2);text-decoration:none;font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-.02em}
+  .menu__sheet a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+}
 
 /* ---------- views ---------- */
 .js .view{display:none}
@@ -1276,11 +1299,25 @@ h1[tabindex="-1"]:focus{outline:none}
           <li class="menu__contact"><a href="#contact">강의 문의</a></li>
         </ul>
       </div>
+      <button class="menu__all" id="menuAll" type="button" aria-expanded="false" aria-controls="menuSheet">전체<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5.5 8l4.5 4.5L14.5 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </nav>
     <div class="bar__act">
       <button class="theme-btn" id="themeBtn" type="button" aria-label="밝은 화면과 어두운 화면 전환"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg></button>
       <a class="btn btn--sm" href="#contact">강의 문의</a>
     </div>
+  </div>
+  <div class="menu__sheet" id="menuSheet" hidden>
+    <ul aria-label="전체 메뉴">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#chainshift">AI-Native 제작자</a></li>
+      <li><a href="#pd">콘텐츠 디렉터/MC</a></li>
+      <li><a href="#yodel">개척형 크리에이터</a></li>
+      <li><a href="#marketing">디지털 마케팅</a></li>
+      <li><a href="#ict">ICT 컨설턴트</a></li>
+      <li><a href="#yonsei">연세대 정보대학원</a></li>
+      <li><a href="#lectures">강의 콘텐츠</a></li>
+      <li><a href="#contact">강의 문의</a></li>
+    </ul>
   </div>
 </header>
 
@@ -1454,7 +1491,7 @@ h1[tabindex="-1"]:focus{outline:none}
         <a class="card lcard" href="#lec-03"><div class="lcard__no"><b>03</b><span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div><h3>광고비 0원으로 55만 채널을 만든 유튜브 기획 문법</h3><p>뉴미디어 콘텐츠 제작 및 유튜브 등 콘텐츠 기획</p></a>
         <a class="card lcard" href="#lec-04"><div class="lcard__no"><b>04</b><span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div><h3>Z세대는 광고를 넘기고, 놀이는 끝까지 본다</h3><p>숏폼 콘텐츠 제작 및 바이럴 전략</p></a>
         <a class="card lcard" href="#lec-05"><div class="lcard__no"><b>05</b><span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div><h3>유료방송·OTT·극장, 돈은 지금 어디로 흐르는가</h3><p>OTT·영화·방송 등 미디어 산업 트렌드 및 플랫폼 비즈니스</p></a>
-        <a class="card lcard" href="#lec-06"><div class="lcard__no"><b>06</b><span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div><h3>대행사 없이 브랜드를 알리는 법, 임플로이언서</h3><p>디지털 마케팅 및 B2B/B2C 콘텐츠 브랜딩·바이럴 전략</p></a>
+        <a class="card lcard" href="#lec-06"><div class="lcard__no"><b>06</b><span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div><h3>인하우스로 브랜드를 알리는 법, 임플로이언서</h3><p>디지털 마케팅 및 B2B/B2C 콘텐츠 브랜딩·바이럴 전략</p></a>
         <a class="card lcard" href="#lec-07"><div class="lcard__no"><b>07</b><span><svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span></div><h3>콘텐츠는 망을 타고 흐른다, 통신사가 미디어 기업이 된 이유</h3><p>ICT·네트워크 인프라와 미디어 유통 구조의 이해</p></a>
       </div>
       <div class="cta is-dark rv" style="margin-top:clamp(56px,7vw,96px)">
@@ -1633,7 +1670,7 @@ h1[tabindex="-1"]:focus{outline:none}
 <div class="view" id="pd" data-label="콘텐츠 디렉터/MC">
   <section class="wrap phero" aria-labelledby="pd-title">
     <div class="crumb"><b>CAREER 02</b><span>콘텐츠 디렉터/MC</span></div>
-    <h1 class="h-1" id="pd-title">대행사 없이, 광고비 없이.<br><span class="grad">팬덤으로 키운</span> 영화 채널</h1>
+    <h1 class="h-1" id="pd-title">인하우스로, 광고비 없이.<br><span class="grad">팬덤으로 키운</span> 영화 채널</h1>
     <p class="lead">영화평론가 이동진과 함께한 SK브로드밴드의 유튜브 오리지널 채널을 기획하고, 메인 MC로 4년간 진행했습니다. 사내 구성원과 프리랜서로 인하우스 제작팀을 꾸리고, 주제와 썸네일, 중간광고, 성과 분석까지 데이터로 운영했습니다. 같은 해에는 직접 기획하고 만든 캐릭터 'B봇'으로 SK그룹 영상 공모전 대상을 받았습니다.</p>
     <div class="meta"><span class="chip">《B tv 이동진의 파이아키아》 기획 · 메인 MC</span><span class="chip">SK그룹 toktokTV 대상</span><span class="chip num">2020.08 – 2024.07</span></div>
   </section>
@@ -1747,7 +1784,7 @@ h1[tabindex="-1"]:focus{outline:none}
     <div class="crumb"><b>CAREER 03</b><span>개척형 크리에이터</span></div>
       <h1 class="h-1" id="yd-title">요들을 누가 보냐고요?<br><span class="grad">264만 번 재생됐습니다</span></h1>
       <p class="lead">남들이 안 하는 걸 해서 세상에 알리고 싶었고, 그래서 요들을 골랐습니다. 낯선 주제를 강좌, 라이브, M/V, 패러디로 바꿔 끝까지 보게 만드는 것. 그게 제 방식입니다.</p>
-      <p class="cv-hero__sub">2019년 3월 '요들랜드TV, 쉽게 배우는 요들'을 열고 아이템 구상부터 섭외, 촬영, 편집, 녹음·믹싱까지 직접 챙겨 <span class="mark">영상 15편 만에 구독자 1만 명</span>을 넘겼습니다.</p>
+      <p class="cv-hero__sub">2019년 3월 '요들랜드TV, 쉽게 배우는 요들'을 열고 아이템 구상부터 섭외, 촬영, 편집, 녹음·믹싱까지 직접 챙겨 <span class="mark">총 조회수 200만 회</span>를 넘겼습니다.</p>
       <div class="meta"><span class="chip">《요들랜드 TV》 요PD · 기획·제작</span><span class="chip">《관심사원》 · B봇 기획</span><span class="chip">《이홍연의 미디어LAB》 채널 준비 중</span><span class="chip num">2018 –</span></div>
     </div>
     <figure class="cv-hero__fig">
@@ -2018,7 +2055,7 @@ h1[tabindex="-1"]:focus{outline:none}
 <div class="view" id="marketing" data-label="디지털 마케팅">
   <section class="wrap phero" aria-labelledby="mkt-title">
     <div class="crumb"><b>CAREER 04</b><span>디지털 마케팅</span></div>
-    <h1 class="h-1" id="mkt-title">광고비 0원, 대행사 0곳.<br><span class="grad">직원이 만든 콘텐츠</span>로 브랜드를 알렸습니다</h1>
+    <h1 class="h-1" id="mkt-title">광고비 0원, 인하우스 제작.<br><span class="grad">직원이 만든 콘텐츠</span>로 브랜드를 알렸습니다</h1>
     <p class="lead">직접 운영하던 유튜브 채널의 성과를 인정받아 영업팀에서 마케팅 조직으로 옮겼습니다. 구성원이 기획·촬영·출연·편집까지 맡는 임플로이언서(Employeencer) 방식으로 틱톡 채널, 라이브커머스, 중간광고, 상품 런칭 콘텐츠를 만들었습니다.</p>
     <div class="meta"><span class="chip">SK브로드밴드 디지털Comm.팀 → AX마케팅팀</span><span class="chip">디지털 마케팅 매니저</span><span class="chip num">2021.01 – 2025.02</span></div>
   </section>
@@ -2383,7 +2420,7 @@ h1[tabindex="-1"]:focus{outline:none}
         <ul class="curr">
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>클릭을 부르는 주제·제목·썸네일, 감이 아니라 데이터로 고르는 법</li>
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>검증된 공식 2/3, 새로운 실험 1/3: 시리즈 포맷 설계</li>
-          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>대행사 없이 인하우스 제작팀을 꾸리고 운영하는 법</li>
+          <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>인하우스 제작팀을 꾸리고 운영하는 법</li>
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>출연자로서의 진행 노하우와 다음 기획을 정하는 성과 분석</li>
         </ul>
         <p class="proof"><b>근거</b>《B tv 이동진의 파이아키아》 기획·메인 MC 4년 · 약 300편 · 누적 7,000만 회</p>
@@ -2426,7 +2463,7 @@ h1[tabindex="-1"]:focus{outline:none}
     <article class="card prog rv" id="lec-06">
       <div>
         <div class="prog__top"><span class="prog__no">PROGRAM 06</span><span class="prog__label">디지털 마케팅 및 B2B/B2C 콘텐츠 브랜딩·바이럴 전략</span></div>
-        <h3>대행사 없이 브랜드를 알리는 법,<br>임플로이언서</h3>
+        <h3>인하우스로 브랜드를 알리는 법,<br>임플로이언서</h3>
         <p class="prog__sub">직원이 만드는 진성 콘텐츠와 성과형 콘텐츠</p>
         <ul class="curr">
           <li><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>직원이 브랜드의 얼굴이 되는 임플로이언서 전략과 운영 리스크</li>
@@ -2565,14 +2602,21 @@ h1[tabindex="-1"]:focus{outline:none}
   // on narrow screens the two-row bar slides away while reading down and returns on the way up
   var bar=document.getElementById('bar'),narrow=window.matchMedia('(max-width:1360px)'),lastY=window.scrollY;
   function onScroll(){var y=window.scrollY;bar.classList.toggle('is-scrolled',y>4);
-    bar.classList.toggle('is-hid',narrow.matches&&y>lastY&&y>160&&!bar.contains(document.activeElement));lastY=y}
+    bar.classList.toggle('is-hid',narrow.matches&&y>lastY&&y>160&&!bar.contains(document.activeElement)&&document.getElementById('menuSheet').hidden);lastY=y}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
   function barH(){root.style.setProperty('--barh',bar.offsetHeight+'px')}
   if('ResizeObserver' in window)new ResizeObserver(barH).observe(bar);else window.addEventListener('resize',barH);barH();
 
   // one view per menu item; the hash names the view (or an anchor inside one)
   var views=[].slice.call(document.querySelectorAll('.view'));
-  var tabs=[].slice.call(document.querySelectorAll('#menuList a'));
+  var tabs=[].slice.call(document.querySelectorAll('#menuList a, #menuSheet a'));
+  // phones: the 전체 button opens every menu item at once; picking one, tapping outside or Esc closes it
+  var allBtn=document.getElementById('menuAll'),sheet=document.getElementById('menuSheet');
+  function setSheet(open){sheet.hidden=!open;allBtn.setAttribute('aria-expanded',open?'true':'false')}
+  allBtn.addEventListener('click',function(){setSheet(sheet.hidden)});
+  sheet.addEventListener('click',function(e){if(e.target.closest('a'))setSheet(false)});
+  document.addEventListener('click',function(e){if(!sheet.hidden&&!bar.contains(e.target))setSheet(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!sheet.hidden){setSheet(false);allBtn.focus()}});
   var order=views.map(function(v){return v.id});
 
   // previous / next cards at the foot of each view
