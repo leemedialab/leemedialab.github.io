@@ -364,13 +364,6 @@ h1[tabindex="-1"]:focus{outline:none}
 .roles b{font-size:17px;font-weight:700;letter-spacing:-.025em;line-height:1.45}
 .roles small{display:block;font-size:14px;color:var(--ink-3);font-weight:500;margin-top:2px}
 .roles em{font-style:normal;font-size:13.5px;color:var(--ink-3);font-weight:600;white-space:nowrap}
-.stage{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
-.stage .card{padding:20px}
-.stage h3{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;letter-spacing:-.02em}
-.stage h3 svg{color:var(--accent)}
-.stage ul{margin-top:12px;display:grid;gap:10px}
-.stage li{font-size:14px;line-height:1.5;color:var(--ink-2)}
-.stage li small{display:block;font-size:12.5px;color:var(--ink-3)}
 
 /* features */
 .feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -1103,7 +1096,6 @@ h1[tabindex="-1"]:focus{outline:none}
   .case{grid-template-columns:minmax(0,1fr)}
   .case:nth-child(even) .case__media{order:0}
   .case__body,.case:nth-child(even) .case__body{padding:4px 6px 10px}
-  .stage{grid-template-columns:minmax(0,1fr)}
   .rail{grid-auto-columns:minmax(270px,62%)}
   .foot .wrap{grid-template-columns:minmax(0,1fr)}
 }
@@ -1171,8 +1163,6 @@ h1[tabindex="-1"]:focus{outline:none}
     <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.6"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></symbol>
-    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
-    <symbol id="i-tv" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12.5" rx="2.5"/><path d="M8.5 2.5L12 6l3.5-3.5"/></symbol>
     <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M8.6 13.4L7 21l5-2.6 5 2.6-1.6-7.6"/></symbol>
     <symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><path d="M12 7.5v4M12 11.5l-5.5 5.4M12 11.5l5.5 5.4"/></symbol>
     <symbol id="i-cycle" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14.3 4.9M4 12a8 8 0 0 1 14.3-4.9"/><path d="M18.5 3v4.2h-4.2M5.5 21v-4.2h4.2"/></symbol>
@@ -1256,7 +1246,32 @@ h1[tabindex="-1"]:focus{outline:none}
   </div>
 
 
-  <section class="sec sec--nums" aria-labelledby="num-title">
+  <section class="sec" aria-labelledby="speaker-title">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Speaker</span>
+        <h2 class="h-2" id="speaker-title">현장에서 직접 만든 숫자로 말하는<br>AI·미디어 콘텐츠 디렉터</h2>
+      </div>
+      <div class="speaker">
+        <div class="speaker__photo rv">
+          <figure class="media"><img src="assets/img/home-speaker.webp" alt="개인 스튜디오에서 마이크 앞에 앉아 턱을 괴고 미소 짓는 이홍연" width="1100" height="1490" loading="lazy"></figure>
+        </div>
+        <div class="rv">
+          <ul class="roles">
+            <li><span class="tag">현)</span><b>체인시프트(Chainshift) AI 콘텐츠 디렉터<small>생성형 AI 검색 최적화(GEO) SaaS</small></b><em>2026 –</em></li>
+            <li><span class="tag">현)</span><b>연세대학교 정보대학원<small>콘텐츠·플랫폼 비즈니스 전공 석사과정</small></b><em>2025 –</em></li>
+            <li><span class="tag">현)</span><b>유튜브 《요들랜드 TV》 PD<small>종합 요들 채널 · 2026 시즌 2</small></b><em>2019 –</em></li>
+            <li><span class="tag tag--past">전)</span><b>SK브로드밴드 AX마케팅팀 디지털 <span class="nw">마케팅 매니저</span><small>콘텐츠 기획·제작 PD</small></b><em>2021 – 2025</em></li>
+            <li><span class="tag tag--past">전)</span><b>《B tv 이동진의 파이아키아》 기획 · <span class="nw">메인 MC</span><small>SK브로드밴드 유튜브 오리지널</small></b><em>2020 – 2024</em></li>
+            <li><span class="tag tag--past">전)</span><b>SK브로드밴드 ICT·네트워크 B2B 컨설턴트</b><em>2017 – 2020</em></li>
+            <li><span class="tag tag--past">학력</span><b>중앙대학교 경영학부 졸업</b><em>2017</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--alt sec--nums" aria-labelledby="num-title">
     <div class="wrap">
       <div class="head">
         <span class="eyebrow">Numbers</span>
@@ -1297,46 +1312,6 @@ h1[tabindex="-1"]:focus{outline:none}
     </div>
   </section>
 
-  <section class="sec sec--alt" aria-labelledby="speaker-title">
-    <div class="wrap">
-      <div class="head">
-        <span class="eyebrow">Speaker</span>
-        <h2 class="h-2" id="speaker-title">현장에서 직접 만든 숫자로 말하는<br>AI·미디어 콘텐츠 디렉터</h2>
-      </div>
-      <div class="speaker">
-        <div class="speaker__photo rv">
-          <figure class="media"><img src="assets/img/home-speaker.webp" alt="개인 스튜디오에서 마이크 앞에 앉아 턱을 괴고 미소 짓는 이홍연" width="1100" height="1490" loading="lazy"></figure>
-        </div>
-        <div class="rv">
-          <ul class="roles">
-            <li><span class="tag">현)</span><b>체인시프트(Chainshift) AI 콘텐츠 디렉터<small>생성형 AI 검색 최적화(GEO) SaaS</small></b><em>2026 –</em></li>
-            <li><span class="tag">현)</span><b>연세대학교 정보대학원<small>콘텐츠·플랫폼 비즈니스 전공 석사과정</small></b><em>2025 –</em></li>
-            <li><span class="tag">현)</span><b>유튜브 《요들랜드 TV》 PD<small>종합 요들 채널 · 2026 시즌 2</small></b><em>2019 –</em></li>
-            <li><span class="tag tag--past">전)</span><b>SK브로드밴드 AX마케팅팀 디지털 <span class="nw">마케팅 매니저</span><small>콘텐츠 기획·제작 PD</small></b><em>2021 – 2025</em></li>
-            <li><span class="tag tag--past">전)</span><b>《B tv 이동진의 파이아키아》 기획 · <span class="nw">메인 MC</span><small>SK브로드밴드 유튜브 오리지널</small></b><em>2020 – 2024</em></li>
-            <li><span class="tag tag--past">전)</span><b>SK브로드밴드 ICT·네트워크 B2B 컨설턴트</b><em>2017 – 2020</em></li>
-            <li><span class="tag tag--past">학력</span><b>중앙대학교 경영학부 졸업</b><em>2017</em></li>
-          </ul>
-          <div class="stage">
-            <div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-mic"/></svg>무대 · 진행</h3><ul>
-              <li>SK브로드밴드 타운홀 공동 MC<small>구성원 약 6,900명 · 2023</small></li>
-              <li>SK그룹 신입사원 연수 임원 토크 MC<small>'SKMS 실천톡' · 2017</small></li>
-            </ul></div>
-            <div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-tv"/></svg>방송 · 미디어</h3><ul>
-              <li>《B tv 이동진의 파이아키아》 메인 MC<small>2020–2024</small></li>
-              <li>T팩토리 필모톡 인터뷰 진행<small>2023</small></li>
-              <li>PLAY Z 라이브커머스 진행<small>네이버 쇼핑라이브 · 2022</small></li>
-            </ul></div>
-            <div class="card"><h3><svg class="ic" aria-hidden="true"><use href="#i-award"/></svg>수상 · 선정</h3><ul>
-              <li>SK그룹 toktokTV 'Best Creator를 찾아라' 대상<small>2020</small></li>
-              <li>CEO SR(Special Recognition) 추천<small>2018 B2B 수주 · 2021 틱톡 채널</small></li>
-            </ul></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="sec" aria-labelledby="why-title">
     <div class="wrap">
       <div class="head">
@@ -1346,7 +1321,7 @@ h1[tabindex="-1"]:focus{outline:none}
       <div class="feats">
         <article class="card feat hoverzoom rv">
           <figure class="media net-fig" role="img" aria-label="ICT 컨설팅, 디지털 마케팅, 콘텐츠·플랫폼 제작과 연구, AI 검색의 다섯 층을 주황색 섬유 다발이 꿰뚫으며 하나로 엮는 일러스트"><svg class="net-svg" viewBox="0 0 400 300" aria-hidden="true"><defs><linearGradient id="net-gs" x1="0" y1="0" x2="1" y2="1"><stop class="net-s1" offset=".35"/><stop class="net-s2" offset="1"/></linearGradient><linearGradient id="net-ge" x1="0" y1="1" x2="1" y2="0"><stop class="net-e1" offset="0"/><stop class="net-e2" offset="1"/></linearGradient><linearGradient id="net-ga" x1="0" y1="0" x2="1" y2="1"><stop class="net-a1" offset="0"/><stop class="net-a2" offset="1"/></linearGradient><filter id="net-bl" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter><filter id="net-bs" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter><rect id="net-e" x="4" y="4" width="100" height="100" rx="7"/><rect id="net-f" width="100" height="100" rx="7"/><g id="net-p"><circle class="net-ho" r="4.6"/><circle r="8" vector-effect="non-scaling-stroke"/></g><g id="net-q"><circle class="net-ho" r="4.6"/><circle r="6.5" vector-effect="non-scaling-stroke"/></g><path id="net-c1" d="M236 259C236 241 320 249 320 218" pathLength="100"/><g id="net-s1"><path class="net-f2" d="M236 259C251 241 307 249 320 218M236 259C222 241 335 249 320 218"/><path class="net-f1" d="M236 259C245 241 329 249 320 218M236 259C227 241 311 249 320 218"/><use href="#net-c1" class="net-gl"/><use href="#net-c1" class="net-co"/><use href="#net-c1" class="net-pu" style="--i:0"/></g><path id="net-c2" d="M320 218C320 204 248 210 248 187" pathLength="100"/><g id="net-s2"><path class="net-f2" d="M320 218C335 204 235 210 248 187M320 218C306 204 263 210 248 187"/><path class="net-f1" d="M320 218C329 204 257 210 248 187M320 218C311 204 239 210 248 187"/><use href="#net-c2" class="net-gl"/><use href="#net-c2" class="net-co"/><use href="#net-c2" class="net-pu" style="--i:1"/></g><path id="net-c3" d="M248 187C248 168 310 176 310 145" pathLength="100"/><g id="net-s3"><path class="net-f2" d="M248 187C263 168 297 176 310 145M248 187C234 168 325 176 310 145"/><path class="net-f1" d="M248 187C257 168 319 176 310 145M248 187C239 168 301 176 310 145"/><use href="#net-c3" class="net-gl"/><use href="#net-c3" class="net-co"/><use href="#net-c3" class="net-pu" style="--i:2"/></g><path id="net-c4" d="M310 145C310 114 276 128 276 76" pathLength="100"/><g id="net-s4"><path class="net-f2" d="M310 145C325 114 263 128 276 76M310 145C296 114 291 128 276 76"/><path class="net-f1" d="M310 145C319 114 285 128 276 76M310 145C301 114 267 128 276 76"/><use href="#net-c4" class="net-gl"/><use href="#net-c4" class="net-co"/><use href="#net-c4" class="net-pu" style="--i:3"/></g><path id="net-g1" class="net-sec" d="M236 259C242 241 237 249 233 220M236 259C231 241 226 249 233 220"/><path id="net-g2" class="net-sec" d="M233 220C239 205 252 211 248 187M233 220C228 205 241 211 248 187"/><path id="net-g3" class="net-sec" d="M248 187C254 166 234 176 230 141M248 187C243 166 223 176 230 141"/><path id="net-g4" class="net-sec" d="M230 141C236 112 280 125 276 76M230 141C225 112 269 125 276 76"/><path id="net-t" class="net-tr" d="M320 218C350 212 384 171 384 118S346 111 346 81"/></defs><ellipse class="net-sh" cx="276" cy="267" rx="92" ry="20"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 185)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><path class="net-ln" d="M8 86L28 95L54 94L78 93L93 78L95 46M28 95L20 72M78 93L70 74"/><path class="net-dt" d="M8 86h0M28 95h0M78 93h0M93 78h0M95 46h0M20 72h0M70 74h0"/><use href="#net-p" class="net-po" x="54" y="94"/></g><use href="#net-g1"/><use href="#net-s1"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 146)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><use href="#net-p" class="net-po" x="94" y="50"/><use href="#net-q" class="net-po2" x="52" y="95"/></g><g class="net-gh"><use href="#net-s1"/><use href="#net-g1"/></g><path class="net-br" d="M194 199v-8M202 203v-12M210 207v-17"/><path class="net-br net-bra" d="M218 211v-24"/><use href="#net-g2"/><use href="#net-s2"/><use href="#net-t"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 107)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><g class="net-ln"><rect x="70" y="8" width="22" height="18" rx="3"/><rect x="70" y="30" width="22" height="18" rx="3"/></g><rect class="net-tla" x="70" y="52" width="22" height="18" rx="3"/><path class="net-tlp" d="M77 57V65L85 61z"/><use href="#net-p" class="net-po" x="66" y="94"/></g><g class="net-gh"><use href="#net-s2"/><use href="#net-g2"/></g><use href="#net-g3"/><use href="#net-s3"/><g class="net-pl" transform="matrix(1 .5 -1 .5 276 68)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><path class="net-pp" d="M2 58H22L28 64V94H2z"/><path class="net-ln" d="M7 66H21M7 74H23M7 82H16"/><use href="#net-p" class="net-po" x="94" y="60"/><use href="#net-q" class="net-po2" x="50" y="96"/></g><g class="net-gh"><use href="#net-s3"/><use href="#net-g3"/></g><use href="#net-g4"/><use href="#net-s4"/><ellipse class="net-gw" cx="276" cy="100" rx="96" ry="34"/><g class="net-pl net-ai" transform="matrix(1 .5 -1 .5 276 22)"><use href="#net-e" class="net-ed"/><use href="#net-f" class="net-sf"/><rect class="net-ln" x="4" y="70" width="38" height="16" rx="8"/><path class="net-ln" d="M12 78H27"/><path class="net-cr" d="M33 74V82"/><circle class="net-lens" cx="54" cy="54" r="17"/><path class="net-hd" d="M70.7 57.3L85 60.3"/><use href="#net-p" class="net-po" x="54" y="54"/><use href="#net-q" class="net-po net-po3" x="94" y="24"/></g><g class="net-gh"><use href="#net-s4"/><use href="#net-g4"/><use href="#net-t"/></g><path class="net-bm" d="M276 68V42"/><circle class="net-hl" cx="276" cy="30" r="15"/><path class="net-sp" d="M276 20.5c1 6.5 3 8.5 9.5 9.5c-6.5 1-8.5 3-9.5 9.5c-1-6.5-3-8.5-9.5-9.5c6.5-1 8.5-3 9.5-9.5z"/><g class="net-ld"><path d="M152 235H178M152 196H178M152 157H178M152 118H178M152 72H178"/><path class="net-ldd" d="M178 235h0M178 196h0M178 157h0M178 118h0"/><path class="net-ldd net-ldai" d="M178 72h0"/></g></svg><div class="net-lbs"><b style="--y:78.3%">ICT 컨설팅</b><b style="--y:65.3%">디지털 마케팅</b><b style="--y:52.3%">콘텐츠·플랫폼 제작</b><b style="--y:39.3%">콘텐츠·플랫폼 연구</b><b class="net-lbai" style="--y:24%">AI 검색</b></div></figure>
-          <div class="feat__body"><span class="feat__no">01</span><h3 class="h-3">망에서 콘텐츠, AI 검색까지<br>미디어 전 과정을 겪은 실무자</h3>
+          <div class="feat__body"><span class="feat__no">01</span><h3 class="h-3">ICT에서 콘텐츠, AI 검색까지<br>미디어 전 과정을 겪은 실무자</h3>
             <p>통신 인프라를 설계해 팔았고, 그 망 위의 상품을 알렸고, 콘텐츠를 직접 만들었고, 이제는 AI가 콘텐츠를 고르는 방식을 연구합니다.</p></div>
         </article>
         <article class="card feat hoverzoom rv">
