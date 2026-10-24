@@ -833,14 +833,90 @@ h1[tabindex="-1"]:focus{outline:none}
 .miles span{display:block;margin-top:6px;font-size:14px;color:var(--ink-2);line-height:1.6}
 
 /* Yonsei */
-.rcard{display:flex;flex-direction:column;padding:0;overflow:hidden}
-.rcard .media{aspect-ratio:16/9;border-radius:0;border-bottom:1px solid var(--line)}
-.rcard div.rcard__b{padding:22px 24px 26px;display:grid;gap:10px}
-.rcard em{font-style:normal;font-size:12.5px;font-weight:800;color:var(--accent-ink)}
-.rcard h3{font-size:19px;font-weight:800;letter-spacing:-.03em;line-height:1.4}
-.rcard p{font-size:14.5px;color:var(--ink-2);line-height:1.65}
-.rcard--dark{justify-content:flex-start}
-.rcard--dark::before{content:"";display:block;aspect-ratio:16/9;border-bottom:1px solid var(--line);background:radial-gradient(closest-side at 70% 45%,rgba(255,106,51,.55),transparent 72%),radial-gradient(closest-side at 25% 70%,rgba(120,120,160,.35),transparent 70%)}
+/* Yonsei research: a feature spread. One lead (01) with a large cover and a colophon, two shorter items (02, 03) below.
+   Each item opens with a running head on a hairline rule; covers are framed like printed plates, captions are numbered. */
+.rs{--rs-gap:clamp(28px,3.9vw,48px);--rs-run:var(--ink)}
+.rs-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:8px 28px;margin-bottom:clamp(22px,2.4vw,30px)}
+.rs-head h2{font-size:clamp(24px,2.6vw,34px);font-weight:800;letter-spacing:-.04em}
+.rs-head p{font-size:14px;color:var(--ink-3);line-height:1.6}
+.rs-head__meta{font-size:13px;font-weight:600;color:var(--ink-3);white-space:nowrap}
+
+.rs-item{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"run run" "fig text";align-content:start;column-gap:var(--rs-gap);row-gap:20px;min-width:0}
+.rs-run{grid-area:run;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;padding-top:12px;border-top:1px solid var(--rs-run)}
+.rs-no{font-size:22px;font-weight:300;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.rs-kind{font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--accent-ink)}
+.rs-course{margin-left:auto;font-size:13px;font-weight:600;color:var(--ink-3);text-align:right}
+
+/* covers: the whole slide, never cropped; the 1px frame sits on the image itself */
+.rs-fig{grid-area:fig;min-width:0}
+.rs-plate{overflow:visible}
+.rs-plate img{display:block;width:100%;height:auto;object-fit:contain;border:1px solid var(--line-2);border-radius:4px;background:#161616}
+.rs-fig figcaption{display:flex;gap:10px;margin-top:10px;font-size:13px;line-height:1.5;color:var(--ink-3)}
+.rs-fig figcaption b{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+
+.rs-text{grid-area:text;min-width:0;display:flex;flex-direction:column}
+.rs-text h3{margin-top:-.22em;font-size:20px;font-weight:800;letter-spacing:-.035em;line-height:1.4}
+.rs-text p{margin-top:10px;font-size:14.5px;color:var(--ink-2);line-height:1.68;text-wrap:pretty}
+.rs-text p.rs-deck{margin-top:10px;font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-.025em;line-height:1.5;text-wrap:balance}
+
+.rs-colo{margin-top:20px;border-top:1px solid var(--line-2)}
+.rs-colo > div{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:14px;padding:9px 0;border-bottom:1px solid var(--line)}
+.rs-colo dt{font-size:12.5px;font-weight:600;color:var(--ink-3);line-height:1.6;padding-top:1px}
+.rs-colo dd{font-size:14px;font-weight:600;color:var(--ink);letter-spacing:-.015em;line-height:1.55}
+.rs-colo dd span{font-size:12.5px;font-weight:500;color:var(--ink-3);margin-left:2px}
+.rs-colo dd b{font-weight:800}
+.rs-colo .rs-nb{white-space:nowrap}
+.rs-colo dd small{display:block;margin-top:2px;font-size:12.5px;font-weight:500;color:var(--ink-3);letter-spacing:-.01em}
+.rs-colo--s{margin-top:16px}
+.rs-colo--s > div{padding:7px 0}
+.rs-colo--s dd{font-size:13.5px}
+
+/* the lead: a bigger headline; on wide screens the colophon settles on the foot of the column, level with the caption */
+.rs-lead .rs-text h3{margin-top:-.16em;font-size:clamp(26px,2.6vw,36px);letter-spacing:-.045em;line-height:1.25}
+.rs-lead .rs-text > p:not(.rs-deck){margin-top:16px;font-size:16px;line-height:1.7}
+.rs-lead .rs-text > p:last-of-type{margin-bottom:24px}
+.rs-lead .rs-no{font-size:30px}
+@media (min-width:1200px){
+  .rs-lead .rs-text{padding-bottom:29.5px}  /* = caption margin + one caption line: the last rule meets the foot of the cover */
+  .rs-lead .rs-colo{margin-top:auto}
+}
+
+/* the two shorter items: cover and text side by side, a hairline column rule between them */
+.rs-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--rs-gap);margin-top:clamp(40px,4.4vw,56px)}
+.rs-sub{position:relative;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:22px;row-gap:18px}
+.rs-pair > .rs-sub + .rs-sub::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--rs-gap) / -2);width:1px;background:var(--line-2)}
+.rs-sub .rs-text p{margin-top:8px}
+.rs-text p.rs-deck--s{margin-top:6px;font-size:14px;font-weight:600;color:var(--ink-2);line-height:1.5}
+
+/* dark: the ink rule would turn near-white, so it steps down to the muted ink; inner rules get one notch stronger */
+:root[data-theme="dark"] .rs{--rs-run:var(--ink-3)}
+:root[data-theme="dark"] .rs-colo > div{border-bottom-color:var(--line-2)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .rs{--rs-run:var(--ink-3)}
+  :root:not([data-theme="light"]) .rs-colo > div{border-bottom-color:var(--line-2)}
+}
+
+@media (max-width:1100px){
+  .rs-head{grid-template-columns:auto minmax(0,1fr)}
+  .rs-head__meta{grid-column:1/-1}
+  .rs-sub{grid-template-columns:minmax(0,1fr);grid-template-areas:"run" "fig" "text";row-gap:16px}
+  .rs-sub .rs-text h3{margin-top:4px}
+}
+@media (max-width:960px){
+  .rs-lead{grid-template-columns:minmax(0,1fr);grid-template-areas:"run" "fig" "text";row-gap:16px}
+  .rs-lead .rs-text h3{margin-top:4px}
+  .rs-lead .rs-colo{margin-top:20px}
+  .rs-lead .rs-text > p:last-of-type{margin-bottom:0}
+}
+@media (max-width:760px){
+  .rs-head{grid-template-columns:minmax(0,1fr);gap:6px}
+  .rs-item{grid-template-columns:minmax(0,1fr);grid-template-areas:"run" "fig" "text";row-gap:16px}
+  .rs-text h3{margin-top:4px}
+  .rs-pair{grid-template-columns:minmax(0,1fr);row-gap:44px;margin-top:44px}
+  .rs-pair > .rs-sub + .rs-sub::before{display:none}
+  .rs-course{flex-basis:100%;margin-left:0;text-align:left}
+  .rs-lead .rs-no{font-size:26px}
+}
 .courses h3{font-size:14px;font-weight:800;color:var(--accent-ink)}
 .courses ul{margin-top:12px;display:grid;gap:8px}
 .courses li{padding:12px 14px;border-radius:12px;background:var(--bg-2);font-size:15px;font-weight:600;letter-spacing:-.02em}
@@ -2053,15 +2129,56 @@ h1[tabindex="-1"]:focus{outline:none}
         <div class="card stat rv"><span class="stat__k">AI 검색 엔진 측정 설계</span><div><div class="stat__num">6<small>개</small></div><p class="stat__sub">ChatGPT·Gemini·구글 2종·네이버 2종</p></div></div>
       </div>
     </div>
-    <div class="block">
-      <div class="block-title"><h2>연구 주제</h2></div>
-      <div class="three">
-        <article class="card rcard rv"><figure class="media"><img src="assets/img/yon-audit.webp" alt="연구 설계 슬라이드: 60개 질문 × 2개 에이전트 × 3회 = 360회 실행" width="1400" height="788" loading="lazy"></figure>
-          <div class="rcard__b"><em>팀 연구 · 2026</em><h3>AI는 누구의 영상을 골라 주는가</h3><p>이용자가 AI 에이전트에게 영상 탐색을 맡길 때 어떤 규모의 채널이 노출 기회를 얻는지 보는 블랙박스 감사 연구입니다. YouTube를 보유한 구글의 Gemini와 OpenAI의 ChatGPT를 비교합니다.</p></div></article>
-        <article class="card rcard rv"><figure class="media"><img src="assets/img/yon-geo.webp" alt="발표 슬라이드: AI 에이전트 플랫폼 관점의 시사점, SEO에서 GEO·AEO로" width="1400" height="788" loading="lazy"></figure>
-          <div class="rcard__b"><em>GEO · AI 검색</em><h3>검색에서 답변으로, 답변에서 행동으로</h3><p>AI 개요(AI Overviews) 시선추적 연구를 분석해 SEO → GEO·AEO, 제로클릭, 출처 표시의 신뢰 설계를 정리했습니다. 6개 AI 검색 엔진의 브랜드 인용 측정 실험을 준비하고 있습니다.</p></div></article>
-        <article class="card rcard rcard--dark is-dark rv">
-          <div class="rcard__b"><em>연구 제안 · 2026</em><h3>AI로 양산된 쇼츠 시대, 창작자 정산은 공정한가</h3><p>영상 생성 AI로 제작비가 크게 떨어진 상황에서 같은 정산 규칙이 여전히 공정한지 묻는 혼합연구 설계입니다. 설문 150~200명, 채널 실측 약 60명, 심층 인터뷰 13~15명으로 구성했습니다.</p></div></article>
+    <div class="block rs" id="yon-research">
+      <header class="rs-head rv">
+        <h2>연구 주제</h2>
+        <p>AI가 고르고 요약하는 시대, 노출과 보상이 누구에게 가는지 봅니다.</p>
+        <span class="rs-head__meta num">2026학년도 2학기 · 3편</span>
+      </header>
+      <article class="rs-item rs-lead rv" aria-labelledby="rs-t1">
+        <div class="rs-run"><span class="rs-no num">01</span><span class="rs-kind">팀 연구 · 연구계획서</span><span class="rs-course">AI 에이전트 플랫폼 전략</span></div>
+        <figure class="rs-fig"><div class="rs-plate"><img src="assets/img/yon-cover-agent.webp" alt="연구계획서 표지: 검은 바탕에 흰 글씨로 ‘AI는 누구의 영상을 골라 주는가’, 오른쪽 붉은 면에 같은 영상 요청이 Gemini와 ChatGPT로 나뉘어 크기가 다른 채널 원으로 이어지는 도식" width="1600" height="900" loading="lazy"></div>
+          <figcaption><b>그림 1</b>연구계획서 표지</figcaption></figure>
+        <div class="rs-text">
+          <h3 id="rs-t1">AI는 누구의 영상을 골라 주는가</h3>
+          <p class="rs-deck">AI 에이전트의 영상 대리 탐색과 유튜브 채널 간 경쟁 기회</p>
+          <p>이용자가 AI 에이전트에게 영상 탐색을 맡길 때 어떤 규모의 채널이 노출 기회를 얻는지 묻습니다. YouTube를 가진 구글과 갖지 않은 OpenAI의 에이전트를 같은 질문으로 비교합니다.</p>
+          <dl class="rs-colo">
+            <div><dt>비교</dt><dd>Gemini <span>YouTube 보유</span> · ChatGPT <span>미보유</span></dd></div>
+            <div><dt>방법</dt><dd>블랙박스 감사</dd></div>
+            <div><dt>규모</dt><dd class="num"><b>360회 실행</b><small>질문 60 × 에이전트 2 × 반복 3</small></dd></div>
+          </dl>
+        </div>
+      </article>
+      <div class="rs-pair">
+        <article class="rs-item rs-sub rv" aria-labelledby="rs-t2">
+          <div class="rs-run"><span class="rs-no num">02</span><span class="rs-kind">팀 논문 발표 · 6주차</span><span class="rs-course">AI 에이전트 플랫폼 전략</span></div>
+          <figure class="rs-fig"><div class="rs-plate"><img src="assets/img/yon-cover-aio.webp" alt="논문 발표 표지: 검은 바탕에 ‘SIGIR 2026 논문 발표’와 ‘AI 개요(AI Overviews)는 검색 행동을 변화시키고 있는가?’, 오른쪽 붉은 면에 검은 눈 모양 아이콘" width="1600" height="900" loading="lazy"></div>
+            <figcaption><b>그림 2</b>논문 발표 표지</figcaption></figure>
+          <div class="rs-text">
+            <h3 id="rs-t2">검색에서 답변으로, 답변에서 행동으로</h3>
+            <p class="rs-deck rs-deck--s">‘AI 개요(AI Overviews)는 검색 행동을 변화시키고 있는가?’ 논문 발표</p>
+            <p>SIGIR 2026에 실린 시선추적 논문을 팀으로 발표하고, SEO → GEO·AEO, 제로클릭, 출처 표시의 신뢰 설계를 짚었습니다.</p>
+            <dl class="rs-colo rs-colo--s">
+              <div><dt>논문</dt><dd>SIGIR 2026 · Allawati et al.<small>RMIT University · Microsoft</small></dd></div>
+              <div><dt>후속</dt><dd>브랜드 인용 측정 준비 중<small>AI 검색 엔진 6개 대상</small></dd></div>
+            </dl>
+          </div>
+        </article>
+        <article class="rs-item rs-sub rv" aria-labelledby="rs-t3">
+          <div class="rs-run"><span class="rs-no num">03</span><span class="rs-kind">개인 연구제안 발표</span><span class="rs-course">AI와 빅데이터 정책 세미나</span></div>
+          <figure class="rs-fig"><div class="rs-plate"><img src="assets/img/yon-cover-shorts.webp" alt="연구제안 발표 표지: 검은 바탕에 ‘유튜브 쇼츠 창작자의 AI 경쟁 인식, 정산 공정성 인식과 창작 지속 의향’, 오른쪽 붉은 면에 AI 활용과 휴먼 오리지널 쇼츠 화면, 인간 창작과 AI 활용의 제작비 막대" width="1600" height="900" loading="lazy"></div>
+            <figcaption><b>그림 3</b>연구제안 발표 표지</figcaption></figure>
+          <div class="rs-text">
+            <h3 id="rs-t3">AI로 양산된 쇼츠 시대, 창작자 정산은 공정한가</h3>
+            <p class="rs-deck rs-deck--s">유튜브 쇼츠 창작자의 AI 경쟁 인식, 정산 공정성 인식과 창작 지속 의향</p>
+            <p>영상 생성 AI로 제작비가 크게 떨어진 상황에서 같은 정산 규칙이 여전히 공정한지 묻습니다.</p>
+            <dl class="rs-colo rs-colo--s">
+              <div><dt>설계</dt><dd>4단계 혼합연구<small>개념모형 → 정량 → 정성 → 정책대안</small></dd></div>
+              <div><dt>규모</dt><dd class="num">설문 150~200명<small><span class="rs-nb">채널 실측 약 60명 ·</span> <span class="rs-nb">심층 인터뷰 13~15명</span></small></dd></div>
+            </dl>
+          </div>
+        </article>
       </div>
     </div>
     <div class="block">
